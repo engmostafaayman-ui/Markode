@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>خدماتنا | Markode</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap');
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Cairo', sans-serif;
+    }
+
+    body {
+      background: #0d0d0d;
+      color: #f0f0f0;
+    }
+
+    .language-switch {
+      display: flex;
+      justify-content: flex-start;
+      padding: 20px;
+      gap: 10px;
+    }
+
+    .language-switch button {
+      background-color: #004e92;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 30px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s ease;
+      font-size: 15px;
+    }
+
+    .language-switch button.active,
+    .language-switch button:hover {
+      background-color: #eb6e00;
+    }
+
+    nav.navbar {
+      background-color: #1a1a1a;
+      padding: 30px 0;
+      text-align: center;
+      position: sticky;
+      top: 0;
+      z-index: 999;
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.5);
+    }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      justify-content: center;
+      gap: 32px;
+      padding: 0;
+      flex-wrap: wrap;
+    }
+
+    .nav-links li a {
+      text-decoration: none;
+      background-color: #eb6e00;
+      color: white;
+      padding: 16px 32px;
+      border-radius: 30px;
+      font-weight: bold;
+      font-size: 17px;
+      transition: background-color 0.3s ease;
+    }
+
+    .nav-links li a:hover {
+      background-color: #004e92;
+    }
+
+    .cover-image img {
+      width: 100%;
+      max-height: 500px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .page-title {
+      text-align: center;
+      padding: 40px 20px 20px;
+    }
+
+    .page-title h1 span {
+      color: #eb6e00;
+      font-size: 36px;
+    }
+
+    .page-title h1 {
+      font-size: 32px;
+    }
+
+    .services-section {
+      padding: 60px 20px;
+      text-align: center;
+    }
+
+    .services-section p {
+      font-size: 18px;
+      color: #ccc;
+      margin-top: 20px;
+      max-width: 700px;
+      margin-inline: auto;
+      line-height: 1.8;
+    }
+
+    .services-list {
+      text-align: right;
+      padding-right: 30px;
+      margin-top: 40px;
+      max-width: 700px;
+      margin-inline: auto;
+    }
+
+    .services-list li {
+      margin-bottom: 10px;
+      font-size: 16px;
+      color: #eee;
+    }
+  </style>
+</head>
+<body>
+  <div class="language-switch">
+    <button id="ar-btn" class="active">AR</button>
+    <button id="en-btn">EN</button>
+  </div>
+
+  <nav class="navbar">
+    <ul class="nav-links">
+      <li><a href="index.html" id="nav-home">الرئيسية</a></li>
+      <li><a href="about.html" id="nav-about">من نحن</a></li>
+      <li><a href="services.html" id="nav-services">خدماتنا</a></li>
+      <li><a href="plans.html" id="nav-plans">الباقات</a></li>
+      <li><a href="contact.html" id="nav-contact">تواصل معنا</a></li>
+    </ul>
+  </nav>
+
+  <section class="page-title">
+    <h1 id="services-title">الخدمات التي نقدمها في <span>Markode</span></h1>
+  </section>
+
+  <section class="cover">
+    <div class="cover-image">
+      <img src="piuter.png" alt="غلاف Markode">
+    </div>
+  </section>
+
+  <section class="services-section">
+    <p id="services-desc">نقدم حلولاً متكاملة تشمل التسويق الرقمي، تصميم وتطوير المواقع والتطبيقات، إدارة الحملات الإعلانية، وتحسين تجربة المستخدم.</p>
+    <ul class="services-list" id="services-list">
+      <li>✦ بناء الهوية البصرية وتصميم الشعارات</li>
+      <li>✦ تصميم مواقع احترافية متجاوبة وسريعة</li>
+      <li>✦ تطوير تطبيقات مخصصة للأعمال</li>
+      <li>✦ إدارة الحملات التسويقية على المنصات الرقمية</li>
+      <li>✦ تحسين محركات البحث SEO وزيادة الظهور</li>
+      <li>✦ كتابة المحتوى التسويقي والتصميم الإبداعي</li>
+    </ul>
+  </section>
+
+  <script>
+    const arBtn = document.getElementById("ar-btn");
+    const enBtn = document.getElementById("en-btn");
+
+    const translations = {
+      ar: {
+        dir: "rtl",
+        lang: "ar",
+        nav: ["الرئيسية", "من نحن", "خدماتنا", "تواصل معنا"],
+        title: "الخدمات التي نقدمها في <span>Markode</span>",
+        desc: "نقدم حلولاً متكاملة تشمل التسويق الرقمي، تصميم وتطوير المواقع والتطبيقات، إدارة الحملات الإعلانية، وتحسين تجربة المستخدم.",
+        services: [
+          "✦ بناء الهوية البصرية وتصميم الشعارات",
+          "✦ تصميم مواقع احترافية متجاوبة وسريعة",
+          "✦ تطوير تطبيقات مخصصة للأعمال",
+          "✦ إدارة الحملات التسويقية على المنصات الرقمية",
+          "✦ تحسين محركات البحث SEO وزيادة الظهور",
+          "✦ كتابة المحتوى التسويقي والتصميم الإبداعي"
+        ]
+      },
+      en: {
+        dir: "ltr",
+        lang: "en",
+        nav: ["Home", "About", "Services", "Plans", "Contact"],
+        title: "Services we provide at <span>Markode</span>",
+        desc: "We provide integrated solutions including digital marketing, website and app design and development, advertising campaign management, and user experience optimization.",
+        services: [
+          "✦ Visual identity and logo design",
+          "✦ Responsive and fast professional website design",
+          "✦ Custom business application development",
+          "✦ Digital platform marketing campaign management",
+          "✦ SEO optimization and visibility boost",
+          "✦ Creative content writing and design"
+        ]
+      }
+    };
+
+    function updateLanguage(lang) {
+      const t = translations[lang];
+      document.documentElement.lang = t.lang;
+      document.documentElement.dir = t.dir;
+      document.getElementById("nav-home").textContent = t.nav[0];
+      document.getElementById("nav-about").textContent = t.nav[1];
+      document.getElementById("nav-services").textContent = t.nav[2];
+      document.getElementById("nav-plans").textContent = t.nav[3];
+      document.getElementById("nav-contact").textContent = t.nav[3];
+      document.getElementById("services-title").innerHTML = t.title;
+      document.getElementById("services-desc").textContent = t.desc;
+      const list = document.getElementById("services-list");
+      list.innerHTML = "";
+      t.services.forEach(item => {
+        const li = document.createElement("li");
+        li.textContent = item;
+        list.appendChild(li);
+      });
+      arBtn.classList.toggle("active", lang === "ar");
+      enBtn.classList.toggle("active", lang === "en");
+    }
+
+    arBtn.onclick = () => updateLanguage("ar");
+    enBtn.onclick = () => updateLanguage("en");
+  </script>
+</body>
+</html>

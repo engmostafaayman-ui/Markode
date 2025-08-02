@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>تواصل معنا | Markode</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap');
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Cairo', sans-serif;
+    }
+
+    body {
+      background: #0d0d0d;
+      color: #f0f0f0;
+      direction: rtl;
+    }
+
+    /* زر اللغة */
+    .language-switch {
+      display: flex;
+      justify-content: flex-start;
+      padding: 20px;
+      gap: 10px;
+    }
+
+    .language-switch button {
+      background-color: #004e92;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 30px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s ease;
+      font-size: 15px;
+    }
+
+    .language-switch button.active,
+    .language-switch button:hover {
+      background-color: #eb6e00;
+    }
+
+    /* شريط التنقل ثابت */
+    nav.navbar {
+      background-color: #1a1a1a;
+      padding: 30px 0;
+      text-align: center;
+      position: sticky;
+      top: 0;
+      z-index: 999;
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.5);
+    }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      justify-content: center;
+      gap: 32px;
+      padding: 0;
+      flex-wrap: wrap;
+    }
+
+    .nav-links li a {
+      text-decoration: none;
+      background-color: #eb6e00;
+      color: white;
+      padding: 16px 32px;
+      border-radius: 30px;
+      font-weight: bold;
+      font-size: 17px;
+      transition: background-color 0.3s ease;
+    }
+
+    .nav-links li a:hover {
+      background-color: #004e92;
+    }
+
+    .intro {
+      text-align: center;
+      margin-top: 40px;
+    }
+
+    .intro h1 {
+      font-size: 28px;
+      color: #eb6e00;
+      margin-bottom: 10px;
+    }
+
+    .intro p {
+      color: #ccc;
+      font-size: 16px;
+    }
+
+    .cover-image img {
+  width: 100%;
+  max-height: 500px;
+  object-fit: cover;
+  display: block;
+}
+
+
+    .contact-wrapper {
+      display: flex;
+      justify-content: center;
+      padding: 50px 20px;
+    }
+
+    .contact-box {
+      width: 100%;
+      max-width: 600px;
+      background-color: #1a1a1a;
+      padding: 40px;
+      border-radius: 20px;
+      box-shadow: 0 0 15px rgba(235, 110, 0, 0.15);
+      transition: 0.3s;
+    }
+
+    .contact-box:hover {
+      box-shadow: 0 0 25px rgba(235, 110, 0, 0.35);
+    }
+
+    .contact-box label {
+      display: block;
+      margin-bottom: 6px;
+      color: #ccc;
+      font-weight: bold;
+    }
+
+    .contact-box input,
+    .contact-box textarea {
+      width: 100%;
+      padding: 14px;
+      margin-bottom: 20px;
+      border: none;
+      border-radius: 10px;
+      background-color: #2a2a2a;
+      color: #fff;
+      font-size: 15px;
+    }
+
+    .contact-box textarea {
+      resize: vertical;
+    }
+
+    .contact-box button {
+      width: 100%;
+      background-color: #004e92;
+      color: #fff;
+      border: none;
+      padding: 16px;
+      border-radius: 10px;
+      font-weight: bold;
+      font-size: 16px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .contact-box button:hover {
+      background-color: #eb6e00;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background-color: #111;
+      color: #888;
+      margin-top: 60px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- زر اللغة -->
+  <div class="language-switch">
+    <button id="ar-btn" class="active">AR</button>
+    <button id="en-btn">EN</button>
+  </div>
+
+  <!-- شريط التنقل -->
+  <nav class="navbar">
+    <ul class="nav-links">
+      <li><a href="index.html" id="nav-home">الرئيسية</a></li>
+      <li><a href="about.html" id="nav-about">من نحن</a></li>
+      <li><a href="services.html" id="nav-services">خدماتنا</a></li>
+      <li><a href="plans.html" id="nav-plans">الباقات</a></li>
+      <li><a href="contact.html" id="nav-contact">تواصل معنا</a></li>
+    </ul>
+  </nav>
+
+  <section class="cover">
+    <div class="cover-image">
+      <img src="piuter.png" alt="غلاف Markode">
+    </div>
+  </section>
+
+  <!-- العنوان -->
+  <section class="intro">
+    <h1 id="contact-title"><strong>تواصل معنا في <span>Markode</span></strong></h1>
+    <p id="intro-text">نحن هنا للإجابة على استفساراتك ومساعدتك في تحقيق أهدافك الرقمية.</p>
+  </section>
+
+  <!-- نموذج التواصل داخل إطار -->
+  <section class="contact-wrapper">
+    <form class="contact-box">
+      <label id="label-name" for="name">الاسم:</label>
+      <input type="text" id="name" name="name" required>
+
+      <label id="label-phone" for="phone">رقم الهاتف:</label>
+      <input type="tel" id="phone" name="phone" required placeholder="05xxxxxxxx">
+
+      <label id="label-email" for="email">البريد الإلكتروني:</label>
+      <input type="email" id="email" name="email" required>
+
+      <label id="label-message" for="message">الرسالة:</label>
+      <textarea id="message" name="message" rows="5" required></textarea>
+
+      <button type="submit" id="submit-btn">إرسال</button>
+    </form>
+  </section>
+
+  <!-- التذييل -->
+  <footer>
+    <p id="footer-text">جميع الحقوق محفوظة &copy; 2023 Markode</p>
+  </footer>
+
+  <!-- سكربت تغيير اللغة -->
+  <script>
+    const translations = {
+      ar: {
+        dir: "rtl",
+        lang: "ar",
+        nav: ["الرئيسية", "من نحن", "خدماتنا", "الباقات", "تواصل معنا"],
+        title: "تواصل معنا في <span>Markode</span>",
+        intro: "نحن هنا للإجابة على استفساراتك ومساعدتك في تحقيق أهدافك الرقمية.",
+        labels: ["الاسم:", "رقم الهاتف:", "البريد الإلكتروني:", "الرسالة:"],
+        submit: "إرسال",
+        footer: "جميع الحقوق محفوظة © 2023 Markode"
+      },
+      en: {
+        dir: "ltr",
+        lang: "en",
+        nav: ["Home", "About", "Services", "Plans", "Contact"],
+        title: "Contact Us at <span>Markode</span>",
+        intro: "We're here to answer your questions and support your digital goals.",
+        labels: ["Name:", "Phone Number:", "Email:", "Message:"],
+        submit: "Send",
+        footer: "All rights reserved © 2023 Markode"
+      }
+    };
+
+    const arBtn = document.getElementById("ar-btn");
+    const enBtn = document.getElementById("en-btn");
+
+    function updateLanguage(lang) {
+      const t = translations[lang];
+
+      document.documentElement.lang = t.lang;
+      document.documentElement.dir = t.dir;
+
+      document.getElementById("nav-home").textContent = t.nav[0];
+      document.getElementById("nav-about").textContent = t.nav[1];
+      document.getElementById("nav-services").textContent = t.nav[2];
+      document.getElementById("nav-plans").textContent = t.nav[3];
+      document.getElementById("nav-contact").textContent = t.nav[4];
+
+      document.getElementById("contact-title").innerHTML = t.title;
+      document.getElementById("intro-text").textContent = t.intro;
+      document.getElementById("label-name").textContent = t.labels[0];
+      document.getElementById("label-phone").textContent = t.labels[1];
+      document.getElementById("label-email").textContent = t.labels[2];
+      document.getElementById("label-message").textContent = t.labels[3];
+      document.getElementById("submit-btn").textContent = t.submit;
+      document.getElementById("footer-text").textContent = t.footer;
+
+      arBtn.classList.toggle("active", lang === "ar");
+      enBtn.classList.toggle("active", lang === "en");
+    }
+
+    arBtn.onclick = () => updateLanguage("ar");
+    enBtn.onclick = () => updateLanguage("en");
+  </script>
+
+</body>
+</html>

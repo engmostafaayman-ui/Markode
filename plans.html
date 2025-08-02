@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>الباقات | Markode</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap');
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Cairo', sans-serif;
+    }
+
+    body {
+      background: #0d0d0d;
+      color: #f0f0f0;
+      direction: rtl;
+    }
+
+    .language-switch {
+      display: flex;
+      justify-content: flex-start;
+      padding: 20px;
+      gap: 10px;
+    }
+
+    .language-switch button {
+      background-color: #004e92;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 30px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s ease;
+      font-size: 15px;
+    }
+
+    .language-switch button.active,
+    .language-switch button:hover {
+      background-color: #eb6e00;
+    }
+
+    nav.navbar {
+      background-color: #1a1a1a;
+      padding: 30px 0;
+      text-align: center;
+      position: sticky;
+      top: 0;
+      z-index: 999;
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.5);
+    }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      justify-content: center;
+      gap: 32px;
+      padding: 0;
+      flex-wrap: wrap;
+    }
+
+    .nav-links li a {
+      text-decoration: none;
+      background-color: #eb6e00;
+      color: white;
+      padding: 16px 32px;
+      border-radius: 30px;
+      font-weight: bold;
+      font-size: 17px;
+      transition: background-color 0.3s ease;
+    }
+
+    .nav-links li a:hover {
+      background-color: #004e92;
+    }
+
+    .hero {
+      background: url('plans-cover.jpg') center/cover no-repeat;
+      height: 100vh;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .overlay {
+      background-color: rgba(0, 0, 0, 0.7);
+      padding: 40px 20px;
+      max-width: 800px;
+      border-radius: 20px;
+      box-shadow: 0 0 25px rgba(235, 110, 0, 0.25);
+    }
+
+    .overlay h1 span {
+      color: #eb6e00;
+      font-size: 32px;
+    }
+
+    
+    .cover-image img {
+  width: 100%;
+  max-height: 500px;
+  object-fit: cover;
+  display: block;
+}
+
+    .overlay p {
+      font-size: 18px;
+      color: #ccc;
+      margin-top: 20px;
+    }
+
+    .plans {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px;
+      padding: 60px 20px;
+      background-color: #111;
+    }
+
+    .plan-card {
+      background: #1a1a1a;
+      border-radius: 15px;
+      padding: 30px 20px;
+      max-width: 300px;
+      text-align: center;
+      box-shadow: 0 0 25px rgba(235, 110, 0, 0.25);
+      transition: 0.3s;
+    }
+
+    .plan-card h2 {
+      color: #eb6e00;
+      margin-bottom: 10px;
+    }
+
+    .plan-card p {
+      color: #ccc;
+      font-size: 16px;
+      margin-bottom: 20px;
+    }
+
+    .plan-card ul {
+      list-style: none;
+      padding: 0;
+      color: #eee;
+      text-align: right;
+      margin-bottom: 20px;
+    }
+
+    .plan-card ul li {
+      margin-bottom: 10px;
+      position: relative;
+      padding-right: 20px;
+    }
+
+    .plan-card ul li::before {
+      content: "✓";
+      position: absolute;
+      right: 0;
+      color: #04d9ff;
+    }
+
+    .plan-card button {
+      background-color: #eb6e00;
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      font-size: 16px;
+      font-weight: bold;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .plan-card button:hover {
+      background-color: #004e92;
+    }
+  </style>
+</head>
+<body>
+  <div class="language-switch">
+    <button id="ar-btn" class="active">AR</button>
+    <button id="en-btn">EN</button>
+  </div>
+
+  <nav class="navbar">
+    <ul class="nav-links">
+      <li><a href="index.html" id="nav-home">الرئيسية</a></li>
+      <li><a href="about.html" id="nav-about">من نحن</a></li>
+      <li><a href="services.html" id="nav-services">خدماتنا</a></li>
+      <li><a href="plans.html" id="nav-plans">الباقات</a></li>
+      <li><a href="contact.html" id="nav-contact">تواصل معنا</a></li>
+    </ul>
+  </nav>
+
+  <section class="cover">
+    <div class="cover-image">
+      <img src="piuter.png" alt="غلاف Markode">
+    </div>
+  </section>
+
+  <section class="hero">
+    <div class="overlay">
+      <h1 id="plans-title"><span>الباقات</span></h1>
+      <p id="plans-desc">اختر الباقة التي تناسب احتياجاتك، سواء كنت شركة ناشئة أو علامة تجارية قائمة.</p>
+    </div>
+  </section>
+
+  <section class="plans">
+    <div class="plan-card">
+      <h2 id="plan1-title">باقة البداية</h2>
+      <p id="plan1-desc">مثالية للشركات الناشئة</p>
+      <ul id="plan1-features">
+        <li>تصميم موقع بسيط</li>
+        <li>تحسين محركات البحث الأساسية</li>
+        <li>دعم فني لمدة 3 أشهر</li>
+      </ul>
+      <button onclick="goTo('contact.html')">اشترك الآن</button>
+    </div>
+    <div class="plan-card">
+      <h2 id="plan2-title">باقة النمو</h2>
+      <p id="plan2-desc">للشركات التي ترغب في التوسع</p>
+      <ul id="plan2-features">
+        <li>تصميم موقع متكامل</li>
+        <li>إدارة الحملات الإعلانية</li>
+        <li>تحسين محركات البحث المتقدم</li>
+        <li>دعم فني لمدة 6 أشهر</li>
+      </ul>
+      <button onclick="goTo('contact.html')">اشترك الآن</button>
+    </div>
+    <div class="plan-card">
+      <h2 id="plan3-title">باقة الاحترافية</h2>
+      <p id="plan3-desc">للشركات الكبرى والعلامات التجارية المعروفة</p>
+      <ul id="plan3-features">
+        <li>تصميم موقع مخصص بالكامل</li>
+        <li>استراتيجيات تسويق رقمي متكاملة</li>
+        <li>تحليل البيانات وتحسين الأداء</li>
+        <li>دعم فني مستمر على مدار العام</li>
+      </ul>
+      <button onclick="goTo('contact.html')">اشترك الآن</button>
+    </div>
+  </section>
+
+  <script>
+    function goTo(link) {
+      window.location.href = link;
+    }
+
+    const translations = {
+      ar: {
+        dir: "rtl",
+        lang: "ar",
+        nav: ["الرئيسية", "من نحن", "خدماتنا", "الباقات", "تواصل معنا"],
+        title: "<span>الباقات</span>",
+        desc: "اختر الباقة التي تناسب احتياجاتك، سواء كنت شركة ناشئة أو علامة تجارية قائمة.",
+        plan1: ["باقة البداية", "مثالية للشركات الناشئة", ["تصميم موقع بسيط", "تحسين محركات البحث الأساسية", "دعم فني لمدة 3 أشهر"]],
+        plan2: ["باقة النمو", "للشركات التي ترغب في التوسع", ["تصميم موقع متكامل", "إدارة الحملات الإعلانية", "تحسين محركات البحث المتقدم", "دعم فني لمدة 6 أشهر"]],
+        plan3: ["باقة الاحترافية", "للشركات الكبرى والعلامات التجارية المعروفة", ["تصميم موقع مخصص بالكامل", "استراتيجيات تسويق رقمي متكاملة", "تحليل البيانات وتحسين الأداء", "دعم فني مستمر على مدار العام"]]
+      },
+      en: {
+        dir: "ltr",
+        lang: "en",
+        nav: ["Home", "About", "Services", "Plans", "Contact"],
+        title: "<span>Plans</span>",
+        desc: "Choose the plan that fits your needs, whether you're a startup or an established brand.",
+        plan1: ["Starter Plan", "Perfect for startups", ["Simple website design", "Basic SEO optimization", "3 months support"]],
+        plan2: ["Growth Plan", "For companies looking to expand", ["Full-featured website", "Ad campaign management", "Advanced SEO optimization", "6 months support"]],
+        plan3: ["Professional Plan", "For large businesses and established brands", ["Fully customized website", "Integrated digital marketing strategies", "Data analysis and performance optimization", "Ongoing annual support"]]
+      }
+    };
+
+    const arBtn = document.getElementById("ar-btn");
+    const enBtn = document.getElementById("en-btn");
+
+    function updateLanguage(lang) {
+      const t = translations[lang];
+      document.documentElement.lang = t.lang;
+      document.documentElement.dir = t.dir;
+      document.getElementById("nav-home").textContent = t.nav[0];
+      document.getElementById("nav-about").textContent = t.nav[1];
+      document.getElementById("nav-services").textContent = t.nav[2];
+      document.getElementById("nav-plans").textContent = t.nav[3];
+      document.getElementById("nav-contact").textContent = t.nav[4];
+      document.getElementById("plans-title").innerHTML = t.title;
+      document.getElementById("plans-desc").textContent = t.desc;
+      document.getElementById("plan1-title").textContent = t.plan1[0];
+      document.getElementById("plan1-desc").textContent = t.plan1[1];
+      document.getElementById("plan1-features").innerHTML = t.plan1[2].map(f => `<li>${f}</li>`).join("");
+      document.getElementById("plan2-title").textContent = t.plan2[0];
+      document.getElementById("plan2-desc").textContent = t.plan2[1];
+      document.getElementById("plan2-features").innerHTML = t.plan2[2].map(f => `<li>${f}</li>`).join("");
+      document.getElementById("plan3-title").textContent = t.plan3[0];
+      document.getElementById("plan3-desc").textContent = t.plan3[1];
+      document.getElementById("plan3-features").innerHTML = t.plan3[2].map(f => `<li>${f}</li>`).join("");
+      arBtn.classList.toggle("active", lang === "ar");
+      enBtn.classList.toggle("active", lang === "en");
+    }
+
+    arBtn.onclick = () => updateLanguage("ar");
+    enBtn.onclick = () => updateLanguage("en");
+  </script>
+</body>
+</html>
