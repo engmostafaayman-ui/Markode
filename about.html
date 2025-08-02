@@ -3,9 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>من نحن | Markode</title>
-      <link rel="icon" href="logo.png" type="image/png">
-
+  <title>Markode | من نحن</title>
+  <link rel="icon" href="logo.png" type="image/png">
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap');
 
@@ -17,27 +16,28 @@
     }
 
     body {
-      background: #0d0d0d;
-      color: #f0f0f0;
+      background: url('background.png') no-repeat center center fixed;
+      background-size: cover;
+      color: #fff;
+      direction: rtl;
     }
 
     .language-switch {
       display: flex;
       justify-content: flex-start;
-      padding: 20px;
-      gap: 10px;
+      padding: 8px 16px;
+      gap: 5px;
     }
 
     .language-switch button {
       background-color: #004e92;
-      color: white;
+      color: #fff;
       border: none;
-      padding: 10px 20px;
-      border-radius: 30px;
-      font-weight: bold;
+      padding: 3px 10px;
+      border-radius: 16px;
       cursor: pointer;
-      transition: 0.3s ease;
-      font-size: 15px;
+      font-weight: bold;
+      font-size: 11px;
     }
 
     .language-switch button.active,
@@ -46,166 +46,112 @@
     }
 
     nav.navbar {
-      background-color: #1a1a1a;
-      padding: 30px 0;
-      text-align: center;
-      position: sticky;
-      top: 0;
-      z-index: 999;
-      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.5);
-    }
-
-    .nav-links {
-      list-style: none;
+      background-color: rgba(0, 0, 0, 0.8);
+      padding: 6px;
       display: flex;
       justify-content: center;
-      gap: 32px;
-      padding: 0;
+      gap: 4px;
       flex-wrap: wrap;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      backdrop-filter: blur(10px);
     }
 
-    .nav-links li a {
+    nav.navbar a {
       text-decoration: none;
       background-color: #eb6e00;
       color: white;
-      padding: 16px 32px;
-      border-radius: 30px;
+      padding: 5px 10px;
+      border-radius: 14px;
+      font-size: 10px;
       font-weight: bold;
-      font-size: 17px;
-      transition: background-color 0.3s ease;
-    }
-
-    .nav-links li a:hover {
-      background-color: #004e92;
-    }
-
-    .cover-image img {
-      width: 100%;
-      max-height: 500px;
-      object-fit: cover;
-      display: block;
-    }
-
-    .about-section {
-      display: flex;
-      justify-content: center;
-      padding: 60px 20px;
-    }
-
-    .about-box {
-      max-width: 800px;
-      background-color: #1a1a1a;
-      padding: 40px;
-      border-radius: 20px;
-      box-shadow: 0 0 15px rgba(235, 110, 0, 0.15);
       transition: 0.3s;
     }
 
-    .about-box:hover {
-      box-shadow: 0 0 25px rgba(235, 110, 0, 0.35);
+    nav.navbar a:hover {
+      background-color: #004e92;
     }
 
-    .about-box h1 {
-      color: #eb6e00;
-      font-size: 28px;
-      margin-bottom: 20px;
+    .hero {
+      padding: 60px 20px;
       text-align: center;
     }
 
-    .about-box p {
-      color: #ccc;
-      font-size: 17px;
-      line-height: 1.8;
-      margin-bottom: 20px;
+    .hero-box {
+      background-color: rgba(255, 255, 255, 0.1);
+      color: #fff;
+      padding: 25px;
+      margin: 0 auto 30px;
+      border-radius: 18px;
+      max-width: 680px;
+      box-shadow: 0 0 30px rgba(0, 0, 0, 0.3);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
     }
 
-    .about-box ul {
-      padding-right: 20px;
-    }
-
-    .about-box ul li {
-      color: #ccc;
-      font-size: 16px;
-      line-height: 1.8;
+    .hero-box h1 {
+      font-size: 30px;
+      color: #060c1e;
       margin-bottom: 10px;
+    }
+
+    .hero-box p {
+      font-size: 16px;
+      color: #eee;
     }
 
     footer {
       text-align: center;
       padding: 20px;
-      background-color: #111;
-      color: #888;
+      color: #ccc;
       margin-top: 60px;
     }
   </style>
 </head>
 <body>
-
   <div class="language-switch">
     <button id="ar-btn" class="active">AR</button>
     <button id="en-btn">EN</button>
   </div>
 
   <nav class="navbar">
-    <ul class="nav-links">
-      <li><a href="index.html" id="nav-home">الرئيسية</a></li>
-      <li><a href="about.html" id="nav-about">من نحن</a></li>
-      <li><a href="services.html" id="nav-services">خدماتنا</a></li>
-      <li><a href="plans.html" id="nav-plans">الباقات</a></li>
-      <li><a href="contact.html" id="nav-contact">تواصل معنا</a></li>
-    </ul>
+    <a href="index.html" id="nav-home">الرئيسية</a>
+    <a href="about.html" id="nav-about">من نحن</a>
+    <a href="services.html" id="nav-services">خدماتنا</a>
+    <a href="plans.html" id="nav-plans">الباقات</a>
+    <a href="contact.html" id="nav-contact">تواصل معنا</a>
   </nav>
 
-  <section class="cover">
-    <div class="cover-image">
-      <img src="piuter.png" alt="غلاف Markode">
-    </div>
-  </section>
-
-  <section class="about-section">
-    <div class="about-box">
-      <h1 id="title">من نحن</h1>
-      <p id="intro">نحن في <strong>Markode</strong> نبتكر حلول رقمية تجمع بين التصميم العصري والتقنيات الحديثة. نساعد الشركات والروّاد في بناء حضور رقمي احترافي.</p>
-      <ul>
-        <li id="li1">✦ فريق متخصص في التصميم، البرمجة، والتسويق الرقمي</li>
-        <li id="li2">✦ خبرة تفوق 5 سنوات في السوق الخليجي والعالمي</li>
-        <li id="li3">✦ نؤمن بأن البساطة جوهر الإبداع ونهتم بالتفاصيل</li>
-        <li id="li4">✦ نقدم نتائج قابلة للقياس ونلتزم بالشفافية</li>
-      </ul>
-      <p id="vision">رؤيتنا هي أن نكون شركاء نجاح حقيقيين لعملائنا، من خلال مشاريع رقمية تعكس هويتهم وتدعم نموهم.</p>
+  <section class="hero">
+    <div class="hero-box">
+      <h1 id="about-title"><strong>من نحن</strong></h1>
+      <p id="about-text">
+        نحن في <strong>Markode</strong> نبتكر حلول رقمية تجمع بين التصميم العصري والتقنيات الحديثة. نساعد الشركات والروّاد في بناء حضور رقمي احترافي. فريقنا متخصص في التصميم، البرمجة، والتسويق الرقمي بخبرة تتجاوز 5 سنوات في السوق الخليجي والعالمي. نؤمن بأن البساطة جوهر الإبداع ونهتم بأدق التفاصيل، ونسعى دائمًا لتحقيق نتائج قابلة للقياس بكل شفافية.
+      </p>
     </div>
   </section>
 
   <footer>
-    <p id="footer-text">جميع الحقوق محفوظة &copy; 2023 Markode</p>
+    <p id="footer-text">جميع الحقوق محفوظة © 2023 Markode</p>
   </footer>
 
   <script>
     const translations = {
       ar: {
-        lang: "ar",
         dir: "rtl",
-        title: "من نحن",
-        intro: "نحن في Markode نبتكر حلول رقمية تجمع بين التصميم العصري والتقنيات الحديثة. نساعد الشركات والروّاد في بناء حضور رقمي احترافي.",
-        li1: "✦ فريق متخصص في التصميم، البرمجة، والتسويق الرقمي",
-        li2: "✦ خبرة تفوق 5 سنوات في السوق الخليجي والعالمي",
-        li3: "✦ نؤمن بأن البساطة جوهر الإبداع ونهتم بالتفاصيل",
-        li4: "✦ نقدم نتائج قابلة للقياس ونلتزم بالشفافية",
-        vision: "رؤيتنا هي أن نكون شركاء نجاح حقيقيين لعملائنا، من خلال مشاريع رقمية تعكس هويتهم وتدعم نموهم.",
+        lang: "ar",
         nav: ["الرئيسية", "من نحن", "خدماتنا", "الباقات", "تواصل معنا"],
+        title: "من نحن",
+        about: "نحن في Markode نبتكر حلول رقمية تجمع بين التصميم العصري والتقنيات الحديثة. نساعد الشركات والروّاد في بناء حضور رقمي احترافي. فريقنا متخصص في التصميم، البرمجة، والتسويق الرقمي بخبرة تتجاوز 5 سنوات في السوق الخليجي والعالمي. نؤمن بأن البساطة جوهر الإبداع ونهتم بأدق التفاصيل، ونسعى دائمًا لتحقيق نتائج قابلة للقياس بكل شفافية.",
         footer: "جميع الحقوق محفوظة © 2023 Markode"
       },
       en: {
-        lang: "en",
         dir: "ltr",
-        title: "About Us",
-        intro: "At Markode, we craft smart digital solutions blending modern design and technology. We help businesses and entrepreneurs build a professional digital presence.",
-        li1: "✦ A team of specialists in design, development, and digital marketing",
-        li2: "✦ Over 5 years of experience in the Gulf and global market",
-        li3: "✦ We believe simplicity is the essence of creativity and focus on details",
-        li4: "✦ We deliver measurable results and commit to transparency",
-        vision: "Our vision is to be true partners in success by building digital projects that reflect identity and support growth.",
+        lang: "en",
         nav: ["Home", "About", "Services", "Plans", "Contact"],
+        title: "About Us",
+        about: "At Markode, we craft digital solutions that blend modern design with cutting-edge technology. We help businesses and entrepreneurs build a professional online presence. Our team specializes in design, development, and digital marketing with over 5 years of experience in the Gulf and global markets. We believe simplicity is the essence of creativity, we focus on the smallest details, and we always strive to deliver measurable and transparent results.",
         footer: "All rights reserved © 2023 Markode"
       }
     };
@@ -213,32 +159,27 @@
     const arBtn = document.getElementById("ar-btn");
     const enBtn = document.getElementById("en-btn");
 
-    function updateContent(lang) {
-      const c = translations[lang];
-      document.documentElement.lang = c.lang;
-      document.documentElement.dir = c.dir;
+    function updateLang(lang) {
+      const t = translations[lang];
+      document.documentElement.lang = t.lang;
+      document.documentElement.dir = t.dir;
 
-      document.getElementById("title").innerText = c.title;
-      document.getElementById("intro").innerText = c.intro;
-      document.getElementById("li1").innerText = c.li1;
-      document.getElementById("li2").innerText = c.li2;
-      document.getElementById("li3").innerText = c.li3;
-      document.getElementById("li4").innerText = c.li4;
-      document.getElementById("vision").innerText = c.vision;
-      document.getElementById("nav-home").innerText = c.nav[0];
-      document.getElementById("nav-about").innerText = c.nav[1];
-      document.getElementById("nav-services").innerText = c.nav[2];
-      document.getElementById("nav-plans").innerText = c.nav[3];
-      document.getElementById("nav-contact").innerText = c.nav[4];
-      document.getElementById("footer-text").innerText = c.footer;
+      document.getElementById("nav-home").textContent = t.nav[0];
+      document.getElementById("nav-about").textContent = t.nav[1];
+      document.getElementById("nav-services").textContent = t.nav[2];
+      document.getElementById("nav-plans").textContent = t.nav[3];
+      document.getElementById("nav-contact").textContent = t.nav[4];
+
+      document.getElementById("about-title").textContent = t.title;
+      document.getElementById("about-text").textContent = t.about;
+      document.getElementById("footer-text").textContent = t.footer;
 
       arBtn.classList.toggle("active", lang === "ar");
       enBtn.classList.toggle("active", lang === "en");
     }
 
-    arBtn.onclick = () => updateContent("ar");
-    enBtn.onclick = () => updateContent("en");
+    arBtn.onclick = () => updateLang("ar");
+    enBtn.onclick = () => updateLang("en");
   </script>
 </body>
 </html>
-
