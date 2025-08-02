@@ -16,28 +16,32 @@
     }
 
     body {
-      background: #0d0d0d;
-      color: #f0f0f0;
+      background: #0d0d0d url('background.png') no-repeat center center fixed;
+      background-size: cover;
+      color: #fff;
       direction: rtl;
+    }
+
+    .highlighted {
+      color: #eb6e00;
     }
 
     .language-switch {
       display: flex;
       justify-content: flex-start;
-      padding: 20px;
-      gap: 10px;
+      padding: 8px 16px;
+      gap: 5px;
     }
 
     .language-switch button {
       background-color: #004e92;
-      color: white;
+      color: #fff;
       border: none;
-      padding: 10px 20px;
-      border-radius: 30px;
-      font-weight: bold;
+      padding: 5px 10px;
+      border-radius: 16px;
       cursor: pointer;
-      transition: 0.3s ease;
-      font-size: 15px;
+      font-weight: bold;
+      font-size: 13px;
     }
 
     .language-switch button.active,
@@ -45,117 +49,134 @@
       background-color: #eb6e00;
     }
 
-    nav.navbar {
-      background-color: #1a1a1a;
-      padding: 30px 0;
-      text-align: center;
-      position: sticky;
-      top: 0;
-      z-index: 999;
-      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.5);
-    }
+   nav.navbar {
+  background-color: rgba(0, 0, 0, 0.8);
+  padding: 6px;
+  display: flex;
+  justify-content: center;
+  gap: 4px;
+  flex-wrap: wrap;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  backdrop-filter: blur(10px);
+}
 
-    .nav-links {
-      list-style: none;
-      display: flex;
-      justify-content: center;
-      gap: 32px;
-      flex-wrap: wrap;
-    }
 
-    .nav-links li a {
-      text-decoration: none;
-      background-color: #eb6e00;
-      color: white;
-      padding: 16px 32px;
-      border-radius: 30px;
-      font-weight: bold;
-      font-size: 17px;
-      transition: background-color 0.3s ease;
-    }
+ nav.navbar a {
+  text-decoration: none;
+  background-color: #eb6e00;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 14px;
+  font-size: 10px;
+  font-weight: bold;
+  transition: 0.3s;
+}
 
-    .nav-links li a:hover {
+nav.navbar a:hover {
+  background-color: #004e92;
+}
+
+
+    nav.navbar a:hover {
       background-color: #004e92;
     }
 
     .cover-image img {
       width: 100%;
-      max-height: 500px;
+      max-height: 400px;
       object-fit: cover;
       display: block;
     }
 
-    .intro {
+    .hero {
+      padding: 60px 20px;
       text-align: center;
-      margin: 40px 0 20px;
     }
 
-    .intro h1 {
-      font-size: 28px;
-      color: #eb6e00;
-      margin-bottom: 10px;
+    .hero-box {
+      max-width: 800px;
+      margin: 0 auto;
+      background-color: rgba(255, 255, 255, 0.1);
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 0 25px rgba(0, 0, 0, 0.2);
+      backdrop-filter: blur(10px);
     }
 
-    .intro p {
+    .hero-box h1 {
+      font-size: 32px;
+      color: #060c1e;
+      margin-bottom: 16px;
+    }
+
+    .hero-box p {
+      font-size: 18px;
+      line-height: 1.8;
       color: #ccc;
-      font-size: 16px;
     }
 
     .contact-wrapper {
       display: flex;
       justify-content: center;
-      padding: 50px 20px;
+      padding: 40px 20px;
     }
 
     .contact-box {
-      width: 100%;
+      background-color: rgba(255,255,255,0.05);
+      padding: 30px;
+      border-radius: 18px;
       max-width: 600px;
-      background-color: #1a1a1a;
-      padding: 40px;
-      border-radius: 20px;
-      box-shadow: 0 0 15px rgba(235, 110, 0, 0.15);
+      width: 100%;
+      box-shadow: 0 0 25px rgba(0, 0, 0, 0.2);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
     }
 
     .contact-box label {
       display: block;
-      margin-bottom: 6px;
-      color: #ccc;
+      color: #eee;
       font-weight: bold;
+      margin-bottom: 6px;
+      margin-top: 16px;
     }
 
     .contact-box input,
     .contact-box textarea {
       width: 100%;
       padding: 14px;
-      margin-bottom: 20px;
+      margin-bottom: 10px;
+      background-color: #1a1a1a;
       border: none;
       border-radius: 10px;
-      background-color: #2a2a2a;
       color: #fff;
       font-size: 15px;
     }
 
     .contact-box button {
-      width: 100%;
-      background-color: #004e92;
+      background-color: #eb6e00;
       color: #fff;
       border: none;
-      padding: 16px;
+      padding: 12px;
       border-radius: 10px;
-      font-weight: bold;
       font-size: 16px;
+      font-weight: bold;
+      width: 100%;
+      margin-top: 10px;
       cursor: pointer;
+      transition: 0.3s;
     }
 
     .contact-box button:hover {
-      background-color: #eb6e00;
+      background-color: #004e92;
     }
 
     #success-message {
-      display: none;
       text-align: center;
       margin-top: 20px;
-      color: #28a745;
+      color: #4caf50;
+      display: none;
       font-weight: bold;
     }
 
@@ -170,37 +191,28 @@
 </head>
 <body>
 
-  <!-- زر اللغة -->
   <div class="language-switch">
     <button id="ar-btn" class="active">AR</button>
     <button id="en-btn">EN</button>
   </div>
 
-  <!-- شريط التنقل -->
   <nav class="navbar">
-    <ul class="nav-links">
-      <li><a href="index.html" id="nav-home">الرئيسية</a></li>
-      <li><a href="about.html" id="nav-about">من نحن</a></li>
-      <li><a href="services.html" id="nav-services">خدماتنا</a></li>
-      <li><a href="plans.html" id="nav-plans">الباقات</a></li>
-      <li><a href="contact.html" id="nav-contact">تواصل معنا</a></li>
-    </ul>
+    <a href="index.html" id="nav-home">الرئيسية</a>
+    <a href="about.html" id="nav-about">من نحن</a>
+    <a href="services.html" id="nav-services">خدماتنا</a>
+    <a href="plans.html" id="nav-plans">الباقات</a>
+    <a href="contact.html" id="nav-contact">تواصل معنا</a>
   </nav>
 
-  <!-- الغلاف -->
-  <section class="cover">
-    <div class="cover-image">
-      <img src="piuter.png" alt="غلاف Markode">
+  <section class="hero">
+    <div class="hero-box">
+      <h1 id="contact-title">
+        <strong>تواصل معنا في <span class="highlighted">Markode</span></strong>
+      </h1>
+      <p id="intro-text">نحن هنا للإجابة على استفساراتك ومساعدتك في تحقيق أهدافك الرقمية.</p>
     </div>
   </section>
 
-  <!-- العنوان -->
-  <section class="intro">
-    <h1 id="contact-title"><strong>تواصل معنا في <span>Markode</span></strong></h1>
-    <p id="intro-text">نحن هنا للإجابة على استفساراتك ومساعدتك في تحقيق أهدافك الرقمية.</p>
-  </section>
-
-  <!-- نموذج التواصل -->
   <section class="contact-wrapper">
     <form class="contact-box" action="https://formspree.io/f/xeozlkkv" method="POST" onsubmit="showSuccessMessage(event)">
       <label id="label-name" for="name">الاسم:</label>
@@ -219,36 +231,35 @@
     </form>
   </section>
 
-  <!-- رسالة نجاح -->
-  <div id="success-message">✅ تم الإرسال بنجاح!</div>
+  <div id="success-message"></div>
 
-  <!-- التذييل -->
   <footer>
-    <p id="footer-text">جميع الحقوق محفوظة &copy; 2023 Markode</p>
+    <p id="footer-text">جميع الحقوق محفوظة © 2023 Markode</p>
   </footer>
 
-  <!-- سكربتات -->
   <script>
     const translations = {
       ar: {
         dir: "rtl",
         lang: "ar",
         nav: ["الرئيسية", "من نحن", "خدماتنا", "الباقات", "تواصل معنا"],
-        title: "تواصل معنا في <span>Markode</span>",
+        title: 'تواصل معنا في <span class="highlighted">Markode</span>',
         intro: "نحن هنا للإجابة على استفساراتك ومساعدتك في تحقيق أهدافك الرقمية.",
         labels: ["الاسم:", "رقم الهاتف:", "البريد الإلكتروني:", "الرسالة:"],
         submit: "إرسال",
-        footer: "جميع الحقوق محفوظة © 2023 Markode"
+        footer: "جميع الحقوق محفوظة © 2023 Markode",
+        success: "✅ تم الإرسال بنجاح! شكراً لتواصلك معنا."
       },
       en: {
         dir: "ltr",
         lang: "en",
         nav: ["Home", "About", "Services", "Plans", "Contact"],
-        title: "Contact Us at <span>Markode</span>",
+        title: 'Contact Us at <span class="highlighted">Markode</span>',
         intro: "We're here to answer your questions and support your digital goals.",
         labels: ["Name:", "Phone Number:", "Email:", "Message:"],
         submit: "Send",
-        footer: "All rights reserved © 2023 Markode"
+        footer: "All rights reserved © 2023 Markode",
+        success: "✅ Sent successfully! Thank you for contacting us."
       }
     };
 
@@ -257,7 +268,6 @@
 
     function updateLanguage(lang) {
       const t = translations[lang];
-
       document.documentElement.lang = t.lang;
       document.documentElement.dir = t.dir;
 
@@ -275,13 +285,19 @@
       document.getElementById("label-message").textContent = t.labels[3];
       document.getElementById("submit-btn").textContent = t.submit;
       document.getElementById("footer-text").textContent = t.footer;
-
-      arBtn.classList.toggle("active", lang === "ar");
-      enBtn.classList.toggle("active", lang === "en");
     }
 
-    arBtn.onclick = () => updateLanguage("ar");
-    enBtn.onclick = () => updateLanguage("en");
+    arBtn.onclick = () => {
+      updateLanguage("ar");
+      arBtn.classList.add("active");
+      enBtn.classList.remove("active");
+    };
+
+    enBtn.onclick = () => {
+      updateLanguage("en");
+      enBtn.classList.add("active");
+      arBtn.classList.remove("active");
+    };
 
     function showSuccessMessage(event) {
       event.preventDefault();
@@ -293,6 +309,8 @@
         headers: { 'Accept': 'application/json' }
       }).then(response => {
         if (response.ok) {
+          const lang = document.documentElement.lang;
+          document.getElementById("success-message").textContent = translations[lang].success;
           document.getElementById("success-message").style.display = "block";
           form.reset();
         } else {
