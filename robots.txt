@@ -1,0 +1,29 @@
+# robots.txt for Markode.com
+# Last updated: 2025-08-02
+
+User-agent: *
+Allow: /
+
+# Block internal admin paths (إن وجدت)
+Disallow: /admin/
+Disallow: /dashboard/
+Disallow: /private/
+
+# Allow essential files
+Allow: /assets/
+Allow: /images/
+Allow: /css/
+Allow: /js/
+
+# Sitemap location (Very important for SEO)
+Sitemap: https://markode.com/sitemap.xml
+
+# Clean-param (if needed for duplicate content)
+# Google specific (اختياري)
+# Clean-param: utm_source&utm_medium&utm_campaign
+
+# Crawl-delay for bots (اختياري - لا تضفه إلا عند مشاكل تحميل)
+# Crawl-delay: 10
+
+# Host directive (لبعض محركات البحث مثل Yandex)
+Host: https://markode.com
