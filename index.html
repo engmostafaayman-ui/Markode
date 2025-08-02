@@ -4,8 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Markode | الرئيسية</title>
-      <link rel="icon" href="logo.png" type="image/png">
-
+  <link rel="icon" href="logo.png" type="image/png">
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap');
 
@@ -17,27 +16,28 @@
     }
 
     body {
-      background: #0d0d0d;
-      color: #f0f0f0;
+      background: url('background.png') no-repeat center center fixed;
+      background-size: cover;
+      color: #fff;
+      direction: rtl;
     }
 
     .language-switch {
       display: flex;
       justify-content: flex-start;
-      padding: 20px;
-      gap: 10px;
+      padding: 8px 16px;
+      gap: 5px;
     }
 
     .language-switch button {
       background-color: #004e92;
-      color: white;
+      color: #fff;
       border: none;
-      padding: 10px 20px;
-      border-radius: 30px;
-      font-weight: bold;
+      padding: 3px 10px;
+      border-radius: 16px;
       cursor: pointer;
-      transition: 0.3s ease;
-      font-size: 15px;
+      font-weight: bold;
+      font-size: 11px;
     }
 
     .language-switch button.active,
@@ -46,114 +46,117 @@
     }
 
     nav.navbar {
-      background-color: #1a1a1a;
-      padding: 30px 0;
-      text-align: center;
-      position: sticky;
-      top: 0;
-      z-index: 999;
-      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.5);
-    }
-
-    .nav-links {
-      list-style: none;
+      background-color: rgba(0, 0, 0, 0.8);
+      padding: 6px;
       display: flex;
       justify-content: center;
-      gap: 32px;
-      padding: 0;
+      gap: 4px;
       flex-wrap: wrap;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      backdrop-filter: blur(10px);
     }
 
-    .nav-links li a {
+    nav.navbar a {
       text-decoration: none;
       background-color: #eb6e00;
       color: white;
-      padding: 16px 32px;
-      border-radius: 30px;
+      padding: 5px 10px;
+      border-radius: 14px;
+      font-size: 10px;
       font-weight: bold;
-      font-size: 17px;
-      transition: background-color 0.3s ease;
+      transition: 0.3s;
     }
 
-    .nav-links li a:hover {
+    nav.navbar a:hover {
       background-color: #004e92;
     }
 
-    .page-title {
-      text-align: center;
-      padding: 40px 20px 20px;
-    }
-
-    .page-title h1 {
-      font-size: 32px;
-    }
-
-    .page-title h1 span {
-      color: #eb6e00;
-      font-size: 36px;
-    }
-
-    .cover-image img {
-      width: 100%;
-      max-height: 500px;
-      object-fit: cover;
-      display: block;
-    }
-
-    .offers-section {
+    .hero {
       padding: 60px 20px;
-      background-color: #111;
       text-align: center;
     }
 
-    .offers-section h2 {
-      font-size: 32px;
-      color: #eb6e00;
-      margin-bottom: 40px;
+    .hero-box {
+      background-color: rgba(255, 255, 255, 0.1);
+      color: #fff;
+      padding: 25px;
+      margin: 0 auto 30px;
+      border-radius: 18px;
+      max-width: 680px;
+      box-shadow: 0 0 30px rgba(0, 0, 0, 0.3);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
     }
 
-    .offer-cards {
+    .hero-box h1 {
+      font-size: 30px;
+      color: #060c1e;
+      margin-bottom: 10px;
+    }
+
+    .highlighted {
+      color: #eb6e00;
+    }
+
+    .hero-box p {
+      font-size: 16px;
+      color: #eee;
+    }
+
+    .hero img {
+      max-width: 100%;
+      border-radius: 15px;
+      margin-top: 30px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.4);
+    }
+
+    .cards {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
       gap: 30px;
+      padding: 50px 20px;
     }
 
-    .offer-card {
-      background: #1a1a1a;
+    .card {
+      background-color: rgba(255, 255, 255, 0.1);
+      color: #fff;
+      padding: 20px;
       border-radius: 15px;
-      padding: 30px 20px;
       max-width: 300px;
       text-align: center;
-      box-shadow: 0 0 25px rgba(235, 110, 0, 0.25);
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.05);
     }
 
-    .offer-card.highlight {
-      box-shadow: 0 0 25px rgba(235, 110, 0, 0.25);
+    .card h3 {
+      color: #060c1e;
+      margin-bottom: 10px;
     }
 
-    .offer-card h3 {
-      color: #eb6e00;
-    }
-
-    .offer-card p {
+    .card p {
       color: #ccc;
-      margin: 15px 0;
+      margin-bottom: 20px;
+      font-size: 14px;
     }
 
-    .offer-card button {
-      background-color: #eb6e00;
-      color: white;
+    .card button {
+      background: linear-gradient(45deg, #eb6e00, #ff8800);
+      color: #fff;
+      padding: 10px 18px;
       border: none;
-      padding: 12px 24px;
-      font-size: 16px;
-      border-radius: 8px;
+      border-radius: 10px;
+      font-weight: bold;
       cursor: pointer;
+      font-size: 14px;
       transition: 0.3s;
     }
 
-    .offer-card button:hover {
-      background-color: #004e92;
+    .card button:hover {
+      background: linear-gradient(45deg, #004e92, #0072d9);
     }
   </style>
 </head>
@@ -164,68 +167,65 @@
   </div>
 
   <nav class="navbar">
-    <ul class="nav-links">
-      <li><a href="index.html" id="nav-home">الرئيسية</a></li>
-      <li><a href="about.html" id="nav-about">من نحن</a></li>
-      <li><a href="services.html" id="nav-services">خدماتنا</a></li>
-      <li><a href="plans.html" id="nav-plans">الباقات</a></li>
-      <li><a href="contact.html" id="nav-contact">تواصل معنا</a></li>
-    </ul>
+    <a href="index.html" id="nav-home">الرئيسية</a>
+    <a href="about.html" id="nav-about">من نحن</a>
+    <a href="services.html" id="nav-services">خدماتنا</a>
+    <a href="plans.html" id="nav-plans">الباقات</a>
+    <a href="contact.html" id="nav-contact">تواصل معنا</a>
   </nav>
 
-  <section class="page-title">
-    <h1 id="main-title">مرحباً بك في <span>Markode</span></h1>
+  <section class="hero">
+    <div class="hero-box">
+      <h1 id="hero-title">
+        <strong>مرحبا بك في <span class="highlighted">Markode</span></strong>
+      </h1>
+      <p id="hero-desc">وجهتك الذكية للتسويق الرقمي وتطوير البرمجيات، نبتكر الحلول وندعم نموك الرقمي، وندخل أفكارك إلى واقع.</p>
+    </div>
+    <img src="piuter.png" alt="Markode Cover">
   </section>
 
-  <section class="cover-image">
-    <img src="piuter.png" alt="الغلاف الرئيسي">
-  </section>
-
-  <section class="offers-section">
-    <h2 id="offers-title">عروضنا</h2>
-    <div class="offer-cards">
-      <div class="offer-card">
-        <h3 id="offer1-title">باقة الشركات</h3>
-        <p id="offer1-desc">حلول متكاملة للتسويق وتطوير المواقع للشركات.</p>
-        <button>اطلب الآن</button>
-      </div>
-      <div class="offer-card highlight">
-        <h3 id="offer2-title">باقة الناشئين</h3>
-        <p id="offer2-desc">تصميم هوية + موقع تعريفي + حملة انطلاقية.</p>
-        <button>اطلب الآن</button>
-      </div>
-      <div class="offer-card">
-        <h3 id="offer3-title">باقة التطوير</h3>
-        <p id="offer3-desc">خدمة تطوير تطبيق أو نظام مخصص حسب الطلب.</p>
-        <button>تواصل معنا</button>
-      </div>
+  <section class="cards">
+    <div class="card">
+      <h3 id="card1-title">باقة الناشئين</h3>
+      <p id="card1-desc">تصميم هوية + موقع تعريفي + حملة انطلاقية.</p>
+      <button id="card1-btn">اطلب الآن</button>
+    </div>
+    <div class="card">
+      <h3 id="card2-title">باقة الشركات</h3>
+      <p id="card2-desc">حلول متكاملة للتسويق وتطوير المواقع للشركات.</p>
+      <button id="card2-btn">اطلب الآن</button>
+    </div>
+    <div class="card">
+      <h3 id="card3-title">باقة التطوير</h3>
+      <p id="card3-desc">خدمة تطوير تطبيق أو نظام مخصص حسب الطلب.</p>
+      <button id="card3-btn">تواصل معنا</button>
     </div>
   </section>
 
   <script>
     const translations = {
       ar: {
-        dir: "rtl",
         lang: "ar",
+        dir: "rtl",
         nav: ["الرئيسية", "من نحن", "خدماتنا", "الباقات", "تواصل معنا"],
-        title: "مرحباً بك في <span>Markode</span>",
-        offers: "عروضنا",
+        title: "مرحبا بك في <span class='highlighted'>Markode</span>",
+        desc: "وجهتك الذكية للتسويق الرقمي وتطوير البرمجيات، نبتكر الحلول وندعم نموك الرقمي، وندخل أفكارك إلى واقع.",
         cards: [
-          ["باقة الشركات", "حلول متكاملة للتسويق وتطوير المواقع للشركات.", "اطلب الآن"],
           ["باقة الناشئين", "تصميم هوية + موقع تعريفي + حملة انطلاقية.", "اطلب الآن"],
+          ["باقة الشركات", "حلول متكاملة للتسويق وتطوير المواقع للشركات.", "اطلب الآن"],
           ["باقة التطوير", "خدمة تطوير تطبيق أو نظام مخصص حسب الطلب.", "تواصل معنا"]
         ]
       },
       en: {
-        dir: "ltr",
         lang: "en",
+        dir: "ltr",
         nav: ["Home", "About", "Services", "Plans", "Contact"],
-        title: "Welcome to <span>Markode</span>",
-        offers: "Our Offers",
+        title: "Welcome to <span class='highlighted'>Markode</span>",
+        desc: "Your smart destination for digital marketing and software development. We innovate solutions, support your digital growth, and turn your ideas into reality.",
         cards: [
-          ["Corporate Package", "Integrated solutions for marketing and web development.", "Order Now"],
-          ["Starter Package", "Branding + Intro Website + Launch Campaign.", "Order Now"],
-          ["Custom Development", "Tailored app or system development.", "Contact Us"]
+          ["Starter Plan", "Brand identity + Landing website + Launch campaign.", "Order Now"],
+          ["Business Plan", "Integrated solutions for marketing and web development.", "Order Now"],
+          ["Development Plan", "Custom application or system development on demand.", "Contact Us"]
         ]
       }
     };
@@ -237,22 +237,28 @@
       const t = translations[lang];
       document.documentElement.lang = t.lang;
       document.documentElement.dir = t.dir;
+
       document.getElementById("nav-home").textContent = t.nav[0];
       document.getElementById("nav-about").textContent = t.nav[1];
       document.getElementById("nav-services").textContent = t.nav[2];
       document.getElementById("nav-plans").textContent = t.nav[3];
       document.getElementById("nav-contact").textContent = t.nav[4];
-      document.getElementById("main-title").innerHTML = t.title;
-      document.getElementById("offers-title").textContent = t.offers;
-      document.getElementById("offer1-title").textContent = t.cards[0][0];
-      document.getElementById("offer1-desc").textContent = t.cards[0][1];
-      document.querySelectorAll(".offer-card button")[0].textContent = t.cards[0][2];
-      document.getElementById("offer2-title").textContent = t.cards[1][0];
-      document.getElementById("offer2-desc").textContent = t.cards[1][1];
-      document.querySelectorAll(".offer-card button")[1].textContent = t.cards[1][2];
-      document.getElementById("offer3-title").textContent = t.cards[2][0];
-      document.getElementById("offer3-desc").textContent = t.cards[2][1];
-      document.querySelectorAll(".offer-card button")[2].textContent = t.cards[2][2];
+
+      document.getElementById("hero-title").innerHTML = `<strong>${t.title}</strong>`;
+      document.getElementById("hero-desc").textContent = t.desc;
+
+      document.getElementById("card1-title").textContent = t.cards[0][0];
+      document.getElementById("card1-desc").textContent = t.cards[0][1];
+      document.getElementById("card1-btn").textContent = t.cards[0][2];
+
+      document.getElementById("card2-title").textContent = t.cards[1][0];
+      document.getElementById("card2-desc").textContent = t.cards[1][1];
+      document.getElementById("card2-btn").textContent = t.cards[1][2];
+
+      document.getElementById("card3-title").textContent = t.cards[2][0];
+      document.getElementById("card3-desc").textContent = t.cards[2][1];
+      document.getElementById("card3-btn").textContent = t.cards[2][2];
+
       arBtn.classList.toggle("active", lang === "ar");
       enBtn.classList.toggle("active", lang === "en");
     }
