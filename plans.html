@@ -3,9 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>الباقات | Markode</title>
-      <link rel="icon" href="logo.png" type="image/png">
-
+  <title>خدماتنا | Markode</title>
+  <link rel="icon" href="logo.png" type="image/png">
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap');
 
@@ -17,28 +16,28 @@
     }
 
     body {
-      background: #0d0d0d;
-      color: #f0f0f0;
+      background: #0d0d0d url('background.png') no-repeat center center fixed;
+      background-size: cover;
+      color: #fff;
       direction: rtl;
     }
 
     .language-switch {
       display: flex;
       justify-content: flex-start;
-      padding: 20px;
-      gap: 10px;
+      padding: 8px 16px;
+      gap: 5px;
     }
 
     .language-switch button {
       background-color: #004e92;
-      color: white;
+      color: #fff;
       border: none;
-      padding: 10px 20px;
-      border-radius: 30px;
-      font-weight: bold;
+      padding: 3px 10px;
+      border-radius: 16px;
       cursor: pointer;
-      transition: 0.3s ease;
-      font-size: 15px;
+      font-weight: bold;
+      font-size: 11px;
     }
 
     .language-switch button.active,
@@ -47,141 +46,115 @@
     }
 
     nav.navbar {
-      background-color: #1a1a1a;
-      padding: 30px 0;
-      text-align: center;
-      position: sticky;
-      top: 0;
-      z-index: 999;
-      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.5);
-    }
-
-    .nav-links {
-      list-style: none;
+      background-color: rgba(0, 0, 0, 0.8);
+      padding: 6px;
       display: flex;
       justify-content: center;
-      gap: 32px;
-      padding: 0;
+      gap: 4px;
       flex-wrap: wrap;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      backdrop-filter: blur(10px);
     }
 
-    .nav-links li a {
+    nav.navbar a {
       text-decoration: none;
       background-color: #eb6e00;
       color: white;
-      padding: 16px 32px;
-      border-radius: 30px;
+      padding: 5px 10px;
+      border-radius: 14px;
+      font-size: 10px;
       font-weight: bold;
-      font-size: 17px;
-      transition: background-color 0.3s ease;
+      transition: 0.3s;
     }
 
-    .nav-links li a:hover {
+    nav.navbar a:hover {
       background-color: #004e92;
     }
 
     .hero {
-      background: url('plans-cover.jpg') center/cover no-repeat;
-      height: 100vh;
-      position: relative;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      padding: 60px 20px;
       text-align: center;
     }
 
-    .overlay {
-      background-color: rgba(0, 0, 0, 0.7);
-      padding: 40px 20px;
-      max-width: 800px;
-      border-radius: 20px;
-      box-shadow: 0 0 25px rgba(235, 110, 0, 0.25);
+    .hero-box {
+      background-color: rgba(255, 255, 255, 0.1);
+      color: #fff;
+      padding: 25px;
+      margin: 0 auto 30px;
+      border-radius: 18px;
+      max-width: 680px;
+      box-shadow: 0 0 30px rgba(0, 0, 0, 0.3);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
     }
 
-    .overlay h1 span {
-      color: #eb6e00;
+    .hero-box h1 {
       font-size: 32px;
+      color: #060c1e;
+      margin-bottom: 16px;
     }
 
-    
-    .cover-image img {
-  width: 100%;
-  max-height: 500px;
-  object-fit: cover;
-  display: block;
-}
-
-    .overlay p {
+    .hero-box p {
       font-size: 18px;
+      line-height: 1.8;
       color: #ccc;
-      margin-top: 20px;
     }
 
-    .plans {
+    .cards {
       display: flex;
-      flex-wrap: wrap;
       justify-content: center;
-      gap: 30px;
-      padding: 60px 20px;
-      background-color: #111;
+      gap: 20px;
+      padding: 40px 20px;
+      flex-wrap: wrap;
     }
 
-    .plan-card {
-      background: #1a1a1a;
+    .card {
+      background-color: rgba(255, 255, 255, 0.1);
+      color: #fff;
+      padding: 20px;
       border-radius: 15px;
-      padding: 30px 20px;
       max-width: 300px;
       text-align: center;
-      box-shadow: 0 0 25px rgba(235, 110, 0, 0.25);
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .card h3 {
+      font-size: 24px;
+      margin-bottom: 10px;
+      color: #060c1e;
+    }
+
+    .card p {
+      font-size: 16px;
+      margin-bottom: 15px;
+    }
+
+    .card button {
+      background: #eb6e00;
+      color: #fff;
+      padding: 10px 18px;
+      border: none;
+      border-radius: 10px;
+      font-weight: bold;
+      cursor: pointer;
+      font-size: 14px;
       transition: 0.3s;
     }
 
-    .plan-card h2 {
-      color: #eb6e00;
-      margin-bottom: 10px;
-    }
-
-    .plan-card p {
-      color: #ccc;
-      font-size: 16px;
-      margin-bottom: 20px;
-    }
-
-    .plan-card ul {
-      list-style: none;
-      padding: 0;
-      color: #eee;
-      text-align: right;
-      margin-bottom: 20px;
-    }
-
-    .plan-card ul li {
-      margin-bottom: 10px;
-      position: relative;
-      padding-right: 20px;
-    }
-
-    .plan-card ul li::before {
-      content: "✓";
-      position: absolute;
-      right: 0;
-      color: #04d9ff;
-    }
-
-    .plan-card button {
-      background-color: #eb6e00;
-      color: white;
-      border: none;
-      padding: 12px 24px;
-      font-size: 16px;
-      font-weight: bold;
-      border-radius: 8px;
-      cursor: pointer;
-      transition: background-color 0.3s;
-    }
-
-    .plan-card button:hover {
+    .card button:hover {
       background-color: #004e92;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background-color: #111;
+      color: #888;
+      margin-top: 60px;
     }
   </style>
 </head>
@@ -192,121 +165,109 @@
   </div>
 
   <nav class="navbar">
-    <ul class="nav-links">
-      <li><a href="index.html" id="nav-home">الرئيسية</a></li>
-      <li><a href="about.html" id="nav-about">من نحن</a></li>
-      <li><a href="services.html" id="nav-services">خدماتنا</a></li>
-      <li><a href="plans.html" id="nav-plans">الباقات</a></li>
-      <li><a href="contact.html" id="nav-contact">تواصل معنا</a></li>
-    </ul>
+    <a href="index.html" id="nav-home">الرئيسية</a>
+    <a href="about.html" id="nav-about">من نحن</a>
+    <a href="services.html" id="nav-services">خدماتنا</a>
+    <a href="plans.html" id="nav-plans">الباقات</a>
+    <a href="contact.html" id="nav-contact">تواصل معنا</a>
   </nav>
 
-  <section class="cover">
-    <div class="cover-image">
-      <img src="piuter.png" alt="غلاف Markode">
-    </div>
-  </section>
-
   <section class="hero">
-    <div class="overlay">
-      <h1 id="plans-title"><span>الباقات</span></h1>
-      <p id="plans-desc">اختر الباقة التي تناسب احتياجاتك، سواء كنت شركة ناشئة أو علامة تجارية قائمة.</p>
+    <div class="hero-box">
+      <h1 id="title"><strong>عروض الباقات</strong></h1>
+      <p id="about-text">اختار الباقة التي تناسب طموحك واحتياجات عملك، نقدم لك خيارات متنوعة تشمل تصميم الهوية، تطوير المواقع، وإدارة الحملات الإعلانية.</p>
     </div>
   </section>
 
-  <section class="plans">
-    <div class="plan-card">
-      <h2 id="plan1-title">باقة البداية</h2>
-      <p id="plan1-desc">مثالية للشركات الناشئة</p>
-      <ul id="plan1-features">
-        <li>تصميم موقع بسيط</li>
-        <li>تحسين محركات البحث الأساسية</li>
-        <li>دعم فني لمدة 3 أشهر</li>
-      </ul>
-      <button onclick="goTo('contact.html')">اشترك الآن</button>
+  <section class="cards">
+    <div class="card">
+      <h3 id="card-title-1">باقة الناشئين</h3>
+      <p id="card-desc-1">تصميم هوية + موقع تعريفي + حملة انطلاقية.</p>
+      <button id="card-btn-1">اطلب الآن</button>
     </div>
-    <div class="plan-card">
-      <h2 id="plan2-title">باقة النمو</h2>
-      <p id="plan2-desc">للشركات التي ترغب في التوسع</p>
-      <ul id="plan2-features">
-        <li>تصميم موقع متكامل</li>
-        <li>إدارة الحملات الإعلانية</li>
-        <li>تحسين محركات البحث المتقدم</li>
-        <li>دعم فني لمدة 6 أشهر</li>
-      </ul>
-      <button onclick="goTo('contact.html')">اشترك الآن</button>
+    <div class="card">
+      <h3 id="card-title-2">باقة الشركات</h3>
+      <p id="card-desc-2">حلول متكاملة للتسويق وتطوير المواقع للشركات.</p>
+      <button id="card-btn-2">اطلب الآن</button>
     </div>
-    <div class="plan-card">
-      <h2 id="plan3-title">باقة الاحترافية</h2>
-      <p id="plan3-desc">للشركات الكبرى والعلامات التجارية المعروفة</p>
-      <ul id="plan3-features">
-        <li>تصميم موقع مخصص بالكامل</li>
-        <li>استراتيجيات تسويق رقمي متكاملة</li>
-        <li>تحليل البيانات وتحسين الأداء</li>
-        <li>دعم فني مستمر على مدار العام</li>
-      </ul>
-      <button onclick="goTo('contact.html')">اشترك الآن</button>
+    <div class="card">
+      <h3 id="card-title-3">باقة التطوير</h3>
+      <p id="card-desc-3">خدمة تطوير تطبيق أو نظام مخصص حسب الطلب.</p>
+      <button id="card-btn-3">تواصل معنا</button>
     </div>
   </section>
+
+  <footer>
+    <p id="footer-text">جميع الحقوق محفوظة © 2025 Markode</p>
+  </footer>
 
   <script>
-    function goTo(link) {
-      window.location.href = link;
-    }
-
     const translations = {
       ar: {
-        dir: "rtl",
         lang: "ar",
+        dir: "rtl",
         nav: ["الرئيسية", "من نحن", "خدماتنا", "الباقات", "تواصل معنا"],
-        title: "<span>الباقات</span>",
-        desc: "اختر الباقة التي تناسب احتياجاتك، سواء كنت شركة ناشئة أو علامة تجارية قائمة.",
-        plan1: ["باقة البداية", "مثالية للشركات الناشئة", ["تصميم موقع بسيط", "تحسين محركات البحث الأساسية", "دعم فني لمدة 3 أشهر"]],
-        plan2: ["باقة النمو", "للشركات التي ترغب في التوسع", ["تصميم موقع متكامل", "إدارة الحملات الإعلانية", "تحسين محركات البحث المتقدم", "دعم فني لمدة 6 أشهر"]],
-        plan3: ["باقة الاحترافية", "للشركات الكبرى والعلامات التجارية المعروفة", ["تصميم موقع مخصص بالكامل", "استراتيجيات تسويق رقمي متكاملة", "تحليل البيانات وتحسين الأداء", "دعم فني مستمر على مدار العام"]]
+        title: "<strong>عروض الباقات</strong>",
+        about: "اختار الباقة التي تناسب طموحك واحتياجات عملك، نقدم لك خيارات متنوعة تشمل تصميم الهوية، تطوير المواقع، وإدارة الحملات الإعلانية.",
+        cards: [
+          { title: "باقة الناشئين", desc: "تصميم هوية + موقع تعريفي + حملة انطلاقية.", btn: "اطلب الآن" },
+          { title: "باقة الشركات", desc: "حلول متكاملة للتسويق وتطوير المواقع للشركات.", btn: "اطلب الآن" },
+          { title: "باقة التطوير", desc: "خدمة تطوير تطبيق أو نظام مخصص حسب الطلب.", btn: "تواصل معنا" }
+        ],
+        footer: "جميع الحقوق محفوظة © 2025 Markode"
       },
       en: {
-        dir: "ltr",
         lang: "en",
+        dir: "ltr",
         nav: ["Home", "About", "Services", "Plans", "Contact"],
-        title: "<span>Plans</span>",
-        desc: "Choose the plan that fits your needs, whether you're a startup or an established brand.",
-        plan1: ["Starter Plan", "Perfect for startups", ["Simple website design", "Basic SEO optimization", "3 months support"]],
-        plan2: ["Growth Plan", "For companies looking to expand", ["Full-featured website", "Ad campaign management", "Advanced SEO optimization", "6 months support"]],
-        plan3: ["Professional Plan", "For large businesses and established brands", ["Fully customized website", "Integrated digital marketing strategies", "Data analysis and performance optimization", "Ongoing annual support"]]
+        title: "<strong>Plans Offers</strong>",
+        about: "Choose the plan that suits your ambition and business needs. We offer diverse options including identity design, web development, and advertising campaign management.",
+        cards: [
+          { title: "Starter Plan", desc: "Brand identity + Landing website + Launch campaign.", btn: "Order Now" },
+          { title: "Business Plan", desc: "Comprehensive solutions for marketing and web development.", btn: "Order Now" },
+          { title: "Development Plan", desc: "Custom application or system development on demand.", btn: "Contact Us" }
+        ],
+        footer: "All rights reserved © 2025 Markode"
       }
     };
 
     const arBtn = document.getElementById("ar-btn");
     const enBtn = document.getElementById("en-btn");
 
-    function updateLanguage(lang) {
+    function updateLang(lang) {
       const t = translations[lang];
       document.documentElement.lang = t.lang;
       document.documentElement.dir = t.dir;
+
       document.getElementById("nav-home").textContent = t.nav[0];
       document.getElementById("nav-about").textContent = t.nav[1];
       document.getElementById("nav-services").textContent = t.nav[2];
       document.getElementById("nav-plans").textContent = t.nav[3];
       document.getElementById("nav-contact").textContent = t.nav[4];
-      document.getElementById("plans-title").innerHTML = t.title;
-      document.getElementById("plans-desc").textContent = t.desc;
-      document.getElementById("plan1-title").textContent = t.plan1[0];
-      document.getElementById("plan1-desc").textContent = t.plan1[1];
-      document.getElementById("plan1-features").innerHTML = t.plan1[2].map(f => `<li>${f}</li>`).join("");
-      document.getElementById("plan2-title").textContent = t.plan2[0];
-      document.getElementById("plan2-desc").textContent = t.plan2[1];
-      document.getElementById("plan2-features").innerHTML = t.plan2[2].map(f => `<li>${f}</li>`).join("");
-      document.getElementById("plan3-title").textContent = t.plan3[0];
-      document.getElementById("plan3-desc").textContent = t.plan3[1];
-      document.getElementById("plan3-features").innerHTML = t.plan3[2].map(f => `<li>${f}</li>`).join("");
+
+      document.getElementById("title").innerHTML = t.title;
+      document.getElementById("about-text").textContent = t.about;
+
+      document.getElementById("card-title-1").textContent = t.cards[0].title;
+      document.getElementById("card-desc-1").textContent = t.cards[0].desc;
+      document.getElementById("card-btn-1").textContent = t.cards[0].btn;
+
+      document.getElementById("card-title-2").textContent = t.cards[1].title;
+      document.getElementById("card-desc-2").textContent = t.cards[1].desc;
+      document.getElementById("card-btn-2").textContent = t.cards[1].btn;
+
+      document.getElementById("card-title-3").textContent = t.cards[2].title;
+      document.getElementById("card-desc-3").textContent = t.cards[2].desc;
+      document.getElementById("card-btn-3").textContent = t.cards[2].btn;
+
+      document.getElementById("footer-text").textContent = t.footer;
+
       arBtn.classList.toggle("active", lang === "ar");
       enBtn.classList.toggle("active", lang === "en");
     }
 
-    arBtn.onclick = () => updateLanguage("ar");
-    enBtn.onclick = () => updateLanguage("en");
+    arBtn.onclick = () => updateLang("ar");
+    enBtn.onclick = () => updateLang("en");
   </script>
 </body>
-
 </html>
