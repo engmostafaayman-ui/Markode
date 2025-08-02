@@ -4,8 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>تواصل معنا | Markode</title>
-      <link rel="icon" href="logo.png" type="image/png">
-
+  <link rel="icon" href="logo.png" type="image/png">
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap');
 
@@ -22,7 +21,6 @@
       direction: rtl;
     }
 
-    /* زر اللغة */
     .language-switch {
       display: flex;
       justify-content: flex-start;
@@ -47,7 +45,6 @@
       background-color: #eb6e00;
     }
 
-    /* شريط التنقل ثابت */
     nav.navbar {
       background-color: #1a1a1a;
       padding: 30px 0;
@@ -63,7 +60,6 @@
       display: flex;
       justify-content: center;
       gap: 32px;
-      padding: 0;
       flex-wrap: wrap;
     }
 
@@ -82,9 +78,16 @@
       background-color: #004e92;
     }
 
+    .cover-image img {
+      width: 100%;
+      max-height: 500px;
+      object-fit: cover;
+      display: block;
+    }
+
     .intro {
       text-align: center;
-      margin-top: 40px;
+      margin: 40px 0 20px;
     }
 
     .intro h1 {
@@ -97,14 +100,6 @@
       color: #ccc;
       font-size: 16px;
     }
-
-    .cover-image img {
-  width: 100%;
-  max-height: 500px;
-  object-fit: cover;
-  display: block;
-}
-
 
     .contact-wrapper {
       display: flex;
@@ -119,11 +114,6 @@
       padding: 40px;
       border-radius: 20px;
       box-shadow: 0 0 15px rgba(235, 110, 0, 0.15);
-      transition: 0.3s;
-    }
-
-    .contact-box:hover {
-      box-shadow: 0 0 25px rgba(235, 110, 0, 0.35);
     }
 
     .contact-box label {
@@ -145,10 +135,6 @@
       font-size: 15px;
     }
 
-    .contact-box textarea {
-      resize: vertical;
-    }
-
     .contact-box button {
       width: 100%;
       background-color: #004e92;
@@ -159,11 +145,18 @@
       font-weight: bold;
       font-size: 16px;
       cursor: pointer;
-      transition: 0.3s;
     }
 
     .contact-box button:hover {
       background-color: #eb6e00;
+    }
+
+    #success-message {
+      display: none;
+      text-align: center;
+      margin-top: 20px;
+      color: #28a745;
+      font-weight: bold;
     }
 
     footer {
@@ -194,6 +187,7 @@
     </ul>
   </nav>
 
+  <!-- الغلاف -->
   <section class="cover">
     <div class="cover-image">
       <img src="piuter.png" alt="غلاف Markode">
@@ -206,14 +200,14 @@
     <p id="intro-text">نحن هنا للإجابة على استفساراتك ومساعدتك في تحقيق أهدافك الرقمية.</p>
   </section>
 
-  <!-- نموذج التواصل داخل إطار -->
+  <!-- نموذج التواصل -->
   <section class="contact-wrapper">
-    <form class="contact-box">
+    <form class="contact-box" action="https://formspree.io/f/xeozlkkv" method="POST" onsubmit="showSuccessMessage(event)">
       <label id="label-name" for="name">الاسم:</label>
       <input type="text" id="name" name="name" required>
 
       <label id="label-phone" for="phone">رقم الهاتف:</label>
-      <input type="tel" id="phone" name="phone" required placeholder="05xxxxxxxx">
+      <input type="tel" id="phone" name="phone" required placeholder="0xxxxxxxx">
 
       <label id="label-email" for="email">البريد الإلكتروني:</label>
       <input type="email" id="email" name="email" required>
@@ -225,12 +219,15 @@
     </form>
   </section>
 
+  <!-- رسالة نجاح -->
+  <div id="success-message">✅ تم الإرسال بنجاح!</div>
+
   <!-- التذييل -->
   <footer>
     <p id="footer-text">جميع الحقوق محفوظة &copy; 2023 Markode</p>
   </footer>
 
-  <!-- سكربت تغيير اللغة -->
+  <!-- سكربتات -->
   <script>
     const translations = {
       ar: {
@@ -285,8 +282,26 @@
 
     arBtn.onclick = () => updateLanguage("ar");
     enBtn.onclick = () => updateLanguage("en");
-  </script>
 
+    function showSuccessMessage(event) {
+      event.preventDefault();
+      const form = event.target;
+
+      fetch(form.action, {
+        method: form.method,
+        body: new FormData(form),
+        headers: { 'Accept': 'application/json' }
+      }).then(response => {
+        if (response.ok) {
+          document.getElementById("success-message").style.display = "block";
+          form.reset();
+        } else {
+          alert("حدث خطأ أثناء الإرسال. حاول لاحقاً.");
+        }
+      }).catch(() => {
+        alert("فشل الاتصال بالخادم.");
+      });
+    }
+  </script>
 </body>
 </html>
-
