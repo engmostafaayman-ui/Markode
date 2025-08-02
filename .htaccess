@@ -1,0 +1,46 @@
+# تفعيل التخزين المؤقت للملفات الثابتة
+<IfModule mod_expires.c>
+  ExpiresActive On
+
+  # الصور
+  ExpiresByType image/png "access plus 1 month"
+  ExpiresByType image/jpeg "access plus 1 month"
+  ExpiresByType image/webp "access plus 1 month"
+  
+  # الفيديوهات
+  ExpiresByType video/mp4 "access plus 1 month"
+
+  # ملفات CSS و JS
+  ExpiresByType text/css "access plus 1 week"
+  ExpiresByType application/javascript "access plus 1 week"
+</IfModule>
+
+# تفعيل الكاش في الهيدر
+<IfModule mod_headers.c>
+  <FilesMatch "\.(jpg|jpeg|png|webp|mp4|css|js)$">
+    Header set Cache-Control "max-age=2592000, public"
+  </FilesMatch>
+</IfModule>
+
+# حماية ملفات النظام
+<FilesMatch "^\.ht">
+  Order allow,deny
+  Deny from all
+</FilesMatch>
+
+# إعادة توجيه www إلى غير www (اختياري)
+#RewriteEngine On
+#RewriteCond %{HTTP_HOST} ^www\.(.*)$ [NC]
+#RewriteRule ^(.*)$ https://%1/$1 [R=301,L]
+
+# تفعيل ضغط GZIP إن وجد
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/plain
+  AddOutputFilterByType DEFLATE text/css
+  AddOutputFilterByType DEFLATE application/javascript
+  AddOutputFilterByType DEFLATE application/x-javascript
+  AddOutputFilterByType DEFLATE text/javascript
+  AddOutputFilterByType DEFLATE text/html
+  AddOutputFilterByType DEFLATE text/xml
+  AddOutputFilterByType DEFLATE image/svg+xml
+</IfModule>
