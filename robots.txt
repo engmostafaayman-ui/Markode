@@ -1,4 +1,4 @@
-# robots.txt for Markode.com
+# robots.txt for Markode.co
 # Last updated: 2025-08-02
 
 User-agent: *
@@ -16,7 +16,7 @@ Allow: /css/
 Allow: /js/
 
 # Sitemap location (Very important for SEO)
-Sitemap: https://markode.com/sitemap.xml
+Sitemap: https://markode.co/sitemap.xml
 
 # Clean-param (if needed for duplicate content)
 # Google specific (اختياري)
@@ -26,4 +26,4 @@ Sitemap: https://markode.com/sitemap.xml
 # Crawl-delay: 10
 
 # Host directive (لبعض محركات البحث مثل Yandex)
-Host: https://markode.com
+Host: https://markode.co
