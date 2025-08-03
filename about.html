@@ -15,11 +15,26 @@
       font-family: 'Cairo', sans-serif;
     }
 
+    html, body {
+      height: 100%;
+      margin: 0;
+    }
+
     body {
       background: url('background.png') no-repeat center center fixed;
       background-size: cover;
       color: #fff;
       direction: rtl;
+    }
+
+    .page-container {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    .content {
+      flex: 1;
     }
 
     .language-switch {
@@ -100,66 +115,53 @@
       font-size: 16px;
       color: #eee;
     }
-html, body {
-  height: 100%;
-  margin: 0;
-}
 
-.page-container {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-}
-
-.content {
-  flex: 1;
-}
-
-    .contact-wrapper {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 20px;
-    }
-
-
-    footer {
-      text-align: center;
-      padding: 20px;
+    footer.footer {
       background-color: #111;
       color: #888;
-      margin-top: 60px;
+      text-align: center;
+      padding: 20px;
+      font-size: 14px;
+      width: 100%;
     }
-    
 
+    footer.footer p {
+      margin: 0;
+    }
   </style>
 </head>
 <body>
-  <div class="language-switch">
-    <button id="ar-btn" class="active">AR</button>
-    <button id="en-btn">EN</button>
-  </div>
+  <div class="page-container">
 
-  <nav class="navbar">
-    <a href="index.html" id="nav-home">الرئيسية</a>
-    <a href="about.html" id="nav-about">من نحن</a>
-    <a href="services.html" id="nav-services">خدماتنا</a>
-    <a href="plans.html" id="nav-plans">الباقات</a>
-    <a href="contact.html" id="nav-contact">تواصل معنا</a>
-  </nav>
-
-  <section class="hero">
-    <div class="hero-box">
-      <h1 id="about-title"><strong>من نحن</strong></h1>
-      <p id="about-text">
-        نحن في <strong>Markode</strong> نبتكر حلول رقمية تجمع بين التصميم العصري والتقنيات الحديثة. نساعد الشركات والروّاد في بناء حضور رقمي احترافي. فريقنا متخصص في التصميم، البرمجة، والتسويق الرقمي بخبرة تتجاوز 5 سنوات في السوق الخليجي والعالمي. نؤمن بأن البساطة جوهر الإبداع ونهتم بأدق التفاصيل، ونسعى دائمًا لتحقيق نتائج قابلة للقياس بكل شفافية.
-      </p>
+    <div class="language-switch">
+      <button id="ar-btn" class="active">AR</button>
+      <button id="en-btn">EN</button>
     </div>
-  </section>
+
+    <nav class="navbar">
+      <a href="index.html" id="nav-home">الرئيسية</a>
+      <a href="about.html" id="nav-about">من نحن</a>
+      <a href="services.html" id="nav-services">خدماتنا</a>
+      <a href="plans.html" id="nav-plans">الباقات</a>
+      <a href="contact.html" id="nav-contact">تواصل معنا</a>
+    </nav>
+
+    <main class="content">
+      <section class="hero">
+        <div class="hero-box">
+          <h1 id="about-title"><strong>من نحن</strong></h1>
+          <p id="about-text">
+            نحن في <strong>Markode</strong> نبتكر حلول رقمية تجمع بين التصميم العصري والتقنيات الحديثة. نساعد الشركات والروّاد في بناء حضور رقمي احترافي. فريقنا متخصص في التصميم، البرمجة، والتسويق الرقمي بخبرة تتجاوز 5 سنوات في السوق الخليجي والعالمي. نؤمن بأن البساطة جوهر الإبداع ونهتم بأدق التفاصيل، ونسعى دائمًا لتحقيق نتائج قابلة للقياس بكل شفافية.
+          </p>
+        </div>
+      </section>
+    </main>
 
     <footer class="footer">
       <p id="footer-text">جميع الحقوق محفوظة © 2025 Markode</p>
     </footer>
+
+  </div>
 
   <script>
     const translations = {
