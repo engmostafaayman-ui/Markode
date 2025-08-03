@@ -3,14 +3,12 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>خدماتنا | Markode</title>
+  <title>الباقات | Markode</title>
   <link rel="icon" href="logo.png" type="image/png">
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap');
-
     * {
-      margin: 0;
-      padding: 0;
+      margin: 0; padding: 0;
       box-sizing: border-box;
       font-family: 'Cairo', sans-serif;
     }
@@ -44,8 +42,7 @@
     .language-switch button:hover {
       background-color: #eb6e00;
     }
-
-    nav.navbar {
+nav.navbar {
       background-color: rgba(0, 0, 0, 0.8);
       padding: 6px;
       display: flex;
@@ -104,22 +101,27 @@
 
     .cards {
       display: flex;
-      justify-content: center;
-      gap: 20px;
-      padding: 40px 20px;
       flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px;
+      padding: 60px 20px;
     }
 
     .card {
       background-color: rgba(255, 255, 255, 0.1);
       color: #fff;
-      padding: 20px;
-      border-radius: 15px;
-      max-width: 300px;
+      padding: 25px;
+      border-radius: 18px;
+      width: 320px;
       text-align: center;
-      box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
       backdrop-filter: blur(10px);
-      border: 1px solid rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      transition: transform 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
     }
 
     .card h3 {
@@ -129,24 +131,74 @@
     }
 
     .card p {
-      font-size: 16px;
-      margin-bottom: 15px;
+      font-size: 15px;
+      margin-bottom: 20px;
+      color: #ccc;
     }
 
     .card button {
-      background: #eb6e00;
+      background: linear-gradient(45deg, #eb6e00, #ff8800);
       color: #fff;
-      padding: 10px 18px;
+      padding: 12px 24px;
       border: none;
       border-radius: 10px;
       font-weight: bold;
       cursor: pointer;
       font-size: 14px;
-      transition: 0.3s;
+      transition: background 0.3s;
     }
 
     .card button:hover {
-      background-color: #004e92;
+      background: linear-gradient(45deg, #004e92, #0072d9);
+    }
+
+    .modal {
+      position: fixed;
+      top: 0; right: 0; bottom: 0; left: 0;
+      background-color: rgba(0,0,0,0.5);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+
+    .modal-content {
+      background: linear-gradient(135deg, #f0f0f0, #e6e6e6);
+      color: #000;
+      padding: 20px;
+      border-radius: 12px;
+      width: 320px;
+      box-shadow: 0 0 25px rgba(0,0,0,0.4);
+    }
+
+    .modal-content input,
+    .modal-content textarea {
+      width: 100%;
+      margin-bottom: 10px;
+      padding: 10px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+    }
+
+    .modal-content .close {
+      float: left;
+      font-size: 20px;
+      cursor: pointer;
+    }
+
+    .modal-content button {
+      background-color: #eb6e00;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 8px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .modal-content button:hover {
+      background-color: #c75b00;
     }
 
     footer {
@@ -156,14 +208,23 @@
       color: #888;
       margin-top: 60px;
     }
+
+    @media (max-width: 600px) {
+      .card {
+        width: 90%;
+      }
+    }
   </style>
 </head>
 <body>
+
+  <!-- تبديل اللغة -->
   <div class="language-switch">
     <button id="ar-btn" class="active">AR</button>
     <button id="en-btn">EN</button>
   </div>
 
+  <!-- القائمة -->
   <nav class="navbar">
     <a href="index.html" id="nav-home">الرئيسية</a>
     <a href="about.html" id="nav-about">من نحن</a>
@@ -172,6 +233,7 @@
     <a href="contact.html" id="nav-contact">تواصل معنا</a>
   </nav>
 
+  <!-- الغلاف -->
   <section class="hero">
     <div class="hero-box">
       <h1 id="title"><strong>عروض الباقات</strong></h1>
@@ -179,55 +241,119 @@
     </div>
   </section>
 
+  <!-- الباقات -->
   <section class="cards">
     <div class="card">
       <h3 id="card-title-1">باقة الناشئين</h3>
       <p id="card-desc-1">تصميم هوية + موقع تعريفي + حملة انطلاقية.</p>
-      <button id="card-btn-1">اطلب الآن</button>
+      <button id="card-btn-1" onclick="openModal('باقة الناشئين')">اطلب الآن</button>
     </div>
     <div class="card">
       <h3 id="card-title-2">باقة الشركات</h3>
       <p id="card-desc-2">حلول متكاملة للتسويق وتطوير المواقع للشركات.</p>
-      <button id="card-btn-2">اطلب الآن</button>
+      <button id="card-btn-2" onclick="openModal('باقة الشركات')">اطلب الآن</button>
     </div>
     <div class="card">
       <h3 id="card-title-3">باقة التطوير</h3>
       <p id="card-desc-3">خدمة تطوير تطبيق أو نظام مخصص حسب الطلب.</p>
-      <button id="card-btn-3">تواصل معنا</button>
+      <button id="card-btn-3" onclick="location.href='contact.html'">تواصل معنا</button>
     </div>
   </section>
 
+  <!-- نافذة الطلب -->
+  <div id="orderModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal()">&times;</span>
+      <center><h3 id="modal-title">طلب الباقة</h3></center>
+
+      <form action="https://formspree.io/f/xeozlkkv" method="POST" onsubmit="showSuccessMessage(event)">
+        <input type="hidden" id="plan-name" name="plan" value="">
+        <input type="text" name="name" id="modal-name" placeholder="الاسم" required>
+        <input type="email" name="email" id="modal-email" placeholder="البريد الإلكتروني" required>
+        <input type="tel" name="phone" id="modal-phone" placeholder="رقم الهاتف" required>
+        <textarea name="details" id="modal-details" placeholder="اكتب تفاصيل الطلب" required></textarea>
+
+        <p id="success-message" style="display:none; color: green; text-align: center; font-weight: bold;">
+          ✅ تم إرسال الطلب بنجاح! سنتواصل معك قريبًا.
+        </p>
+
+        <center><button type="submit" id="modal-submit">إرسال الطلب</button></center>
+      </form>
+    </div>
+  </div>
+
+  <!-- الفوتر -->
   <footer>
     <p id="footer-text">جميع الحقوق محفوظة © 2025 Markode</p>
   </footer>
 
+  <!-- السكربت -->
   <script>
+    function openModal(plan) {
+      document.getElementById("plan-name").value = plan;
+      document.getElementById("orderModal").style.display = "flex";
+    }
+
+    function closeModal() {
+      document.getElementById("orderModal").style.display = "none";
+    }
+
+    function showSuccessMessage(event) {
+      event.preventDefault();
+      const form = event.target;
+
+      fetch(form.action, {
+        method: "POST",
+        body: new FormData(form),
+        headers: { 'Accept': 'application/json' }
+      }).then(response => {
+        if (response.ok) {
+          form.reset();
+          const lang = document.documentElement.lang;
+          const msg = lang === "ar"
+            ? "✅ تم إرسال الطلب بنجاح! سنتواصل معك قريبًا."
+            : "✅ Your request has been sent successfully! We will contact you shortly.";
+          document.getElementById("success-message").textContent = msg;
+          document.getElementById("success-message").style.display = "block";
+          setTimeout(() => {
+            closeModal();
+            document.getElementById("success-message").style.display = "none";
+          }, 3000);
+        } else {
+          alert("❌ حدث خطأ أثناء إرسال الطلب.");
+        }
+      }).catch(() => {
+        alert("⚠️ تعذر الاتصال بالخادم.");
+      });
+    }
+
+    // الترجمة
     const translations = {
       ar: {
-        lang: "ar",
-        dir: "rtl",
+        lang: "ar", dir: "rtl",
         nav: ["الرئيسية", "من نحن", "خدماتنا", "الباقات", "تواصل معنا"],
         title: "<strong>عروض الباقات</strong>",
-        about: "اختار الباقة التي تناسب طموحك واحتياجات عملك، نقدم لك خيارات متنوعة تشمل تصميم الهوية، تطوير المواقع، وإدارة الحملات الإعلانية.",
+        about: "اختار الباقة التي تناسب طموحك واحتياجات عملك...",
         cards: [
           { title: "باقة الناشئين", desc: "تصميم هوية + موقع تعريفي + حملة انطلاقية.", btn: "اطلب الآن" },
           { title: "باقة الشركات", desc: "حلول متكاملة للتسويق وتطوير المواقع للشركات.", btn: "اطلب الآن" },
           { title: "باقة التطوير", desc: "خدمة تطوير تطبيق أو نظام مخصص حسب الطلب.", btn: "تواصل معنا" }
         ],
-        footer: "جميع الحقوق محفوظة © 2025 Markode"
+        footer: "جميع الحقوق محفوظة © 2025 Markode",
+        modal: { title: "طلب الباقة", name: "الاسم", email: "البريد الإلكتروني", phone: "رقم الهاتف", details: "اكتب تفاصيل الطلب", submit: "إرسال الطلب" }
       },
       en: {
-        lang: "en",
-        dir: "ltr",
+        lang: "en", dir: "ltr",
         nav: ["Home", "About", "Services", "Plans", "Contact"],
         title: "<strong>Plans Offers</strong>",
-        about: "Choose the plan that suits your ambition and business needs. We offer diverse options including identity design, web development, and advertising campaign management.",
+        about: "Choose the plan that suits your ambition and business needs...",
         cards: [
           { title: "Starter Plan", desc: "Brand identity + Landing website + Launch campaign.", btn: "Order Now" },
           { title: "Business Plan", desc: "Comprehensive solutions for marketing and web development.", btn: "Order Now" },
           { title: "Development Plan", desc: "Custom application or system development on demand.", btn: "Contact Us" }
         ],
-        footer: "All rights reserved © 2025 Markode"
+        footer: "All rights reserved © 2025 Markode",
+        modal: { title: "Order Plan", name: "Your Name", email: "Email", phone: "Phone", details: "Request details", submit: "Submit" }
       }
     };
 
@@ -261,6 +387,12 @@
       document.getElementById("card-btn-3").textContent = t.cards[2].btn;
 
       document.getElementById("footer-text").textContent = t.footer;
+      document.getElementById("modal-title").textContent = t.modal.title;
+      document.getElementById("modal-name").placeholder = t.modal.name;
+      document.getElementById("modal-email").placeholder = t.modal.email;
+      document.getElementById("modal-phone").placeholder = t.modal.phone;
+      document.getElementById("modal-details").placeholder = t.modal.details;
+      document.getElementById("modal-submit").textContent = t.modal.submit;
 
       arBtn.classList.toggle("active", lang === "ar");
       enBtn.classList.toggle("active", lang === "en");
