@@ -100,14 +100,38 @@
       font-size: 16px;
       color: #eee;
     }
+html, body {
+  height: 100%;
+  margin: 0;
+}
 
-   footer {
+.page-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.content {
+  flex: 1;
+}
+
+    .contact-wrapper {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+
+
+    footer {
       text-align: center;
       padding: 20px;
       background-color: #111;
       color: #888;
       margin-top: 60px;
     }
+    
+
   </style>
 </head>
 <body>
@@ -133,9 +157,9 @@
     </div>
   </section>
 
-  <footer>
-    <p id="footer-text">جميع الحقوق محفوظة © 2025 Markode</p>
-  </footer>
+    <footer class="footer">
+      <p id="footer-text">جميع الحقوق محفوظة © 2025 Markode</p>
+    </footer>
 
   <script>
     const translations = {
@@ -145,7 +169,7 @@
         nav: ["الرئيسية", "من نحن", "خدماتنا", "الباقات", "تواصل معنا"],
         title: "من نحن",
         about: "نحن في Markode نبتكر حلول رقمية تجمع بين التصميم العصري والتقنيات الحديثة. نساعد الشركات والروّاد في بناء حضور رقمي احترافي. فريقنا متخصص في التصميم، البرمجة، والتسويق الرقمي بخبرة تتجاوز 5 سنوات في السوق الخليجي والعالمي. نؤمن بأن البساطة جوهر الإبداع ونهتم بأدق التفاصيل، ونسعى دائمًا لتحقيق نتائج قابلة للقياس بكل شفافية.",
-        footer: "جميع الحقوق محفوظة © 2023 Markode"
+        footer: "جميع الحقوق محفوظة © 2025 Markode"
       },
       en: {
         dir: "ltr",
@@ -153,7 +177,7 @@
         nav: ["Home", "About", "Services", "Plans", "Contact"],
         title: "About Us",
         about: "At Markode, we craft digital solutions that blend modern design with cutting-edge technology. We help businesses and entrepreneurs build a professional online presence. Our team specializes in design, development, and digital marketing with over 5 years of experience in the Gulf and global markets. We believe simplicity is the essence of creativity, we focus on the smallest details, and we always strive to deliver measurable and transparent results.",
-        footer: "All rights reserved © 2023 Markode"
+        footer: "All rights reserved © 2025 Markode"
       }
     };
 
@@ -184,5 +208,3 @@
   </script>
 </body>
 </html>
-
-
