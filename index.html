@@ -158,9 +158,83 @@
     .card button:hover {
       background: linear-gradient(45deg, #004e92, #0072d9);
     }
+
+    .modal {
+      position: fixed;
+      top: 0; right: 0; bottom: 0; left: 0;
+      background-color: rgba(0,0,0,0.5);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+
+    .modal-content {
+      background: linear-gradient(135deg, #f0f0f0, #e6e6e6);
+      color: #000;
+      padding: 20px;
+      border-radius: 12px;
+      width: 300px;
+      box-shadow: 0 0 25px rgba(0,0,0,0.4);
+    }
+
+    .modal-content input,
+    .modal-content textarea {
+      width: 100%;
+      margin-bottom: 10px;
+      padding: 10px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+    }
+
+    .modal-content .close {
+      float: left;
+      font-size: 20px;
+      cursor: pointer;
+    }
+
+    .modal-content button {
+      background-color: #eb6e00;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 8px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .modal-content button:hover {
+      background-color: #c75b00;
+    }
+
+    @media (max-width: 600px) {
+      .hero-box h1 {
+        font-size: 24px;
+      }
+      .hero img {
+        width: 100%;
+        height: auto;
+      }
+      .cards {
+        flex-direction: column;
+        align-items: center;
+      }
+      .card {
+        max-width: 90%;
+      }
+    }
+
+    @media (max-width: 400px) {
+      nav.navbar a {
+        font-size: 8px;
+        padding: 3px 6px;
+      }
+    }
   </style>
 </head>
 <body>
+
   <div class="language-switch">
     <button id="ar-btn" class="active">AR</button>
     <button id="en-btn">EN</button>
@@ -188,45 +262,102 @@
     <div class="card">
       <h3 id="card1-title">باقة الناشئين</h3>
       <p id="card1-desc">تصميم هوية + موقع تعريفي + حملة انطلاقية.</p>
-      <button id="card1-btn">اطلب الآن</button>
+      <button id="card1-btn" onclick="openModal('باقة الناشئين')">اطلب الآن</button>
     </div>
     <div class="card">
       <h3 id="card2-title">باقة الشركات</h3>
       <p id="card2-desc">حلول متكاملة للتسويق وتطوير المواقع للشركات.</p>
-      <button id="card2-btn">اطلب الآن</button>
+      <button id="card2-btn" onclick="openModal('باقة الشركات')">اطلب الآن</button>
     </div>
     <div class="card">
       <h3 id="card3-title">باقة التطوير</h3>
       <p id="card3-desc">خدمة تطوير تطبيق أو نظام مخصص حسب الطلب.</p>
-      <button id="card3-btn">تواصل معنا</button>
+      <button id="card3-btn" onclick="location.href='contact.html'">تواصل معنا</button>
     </div>
   </section>
 
+  <!-- Modal Form -->
+<div id="orderModal" class="modal" style="display:none;">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal()">&times;</span>
+    <center><h3 id="modal-title">طلب الباقة</h3></center>
+
+    <form class="contact-box" action="https://formspree.io/f/xeozlkkv" method="POST" onsubmit="showSuccessMessage(event)">
+      <input type="hidden" id="plan-name" name="plan" value="">
+      <input type="text" name="name" id="modal-name" placeholder="الاسم" required>
+      <input type="email" name="email" id="modal-email" placeholder="البريد الإلكتروني" required>
+      <input type="tel" name="phone" id="modal-phone" placeholder="رقم الهاتف" required>
+      <textarea name="details" id="modal-details" placeholder="اكتب تفاصيل الطلب" required></textarea>
+
+      <!-- ✅ رسالة الشكر باللغة الإنجليزية -->
+      <p id="success-message" style="display:none; color: green; text-align: center; font-weight: bold;">
+        ✅ Your request has been sent successfully! We will contact you shortly.
+      </p>
+
+      <center><button type="submit" id="modal-submit">إرسال الطلب</button></center>
+    </form>
+
+  </div>
+</div>
+
+
   <script>
+    function openModal(plan) {
+      document.getElementById("plan-name").value = plan;
+      document.getElementById("orderModal").style.display = "flex";
+    }
+
+    function closeModal() {
+      document.getElementById("orderModal").style.display = "none";
+    }
+
+
+function showSuccessMessage(event) {
+  event.preventDefault();
+  const form = event.target;
+
+  fetch(form.action, {
+    method: "POST",
+    body: new FormData(form),
+    headers: { 'Accept': 'application/json' }
+  }).then(response => {
+    if (response.ok) {
+      form.reset();
+      document.getElementById("success-message").style.display = "block";
+      setTimeout(() => {
+        closeModal();
+        document.getElementById("success-message").style.display = "none";
+      }, 3000);
+    } else {
+      alert("❌ There was an error submitting the form.");
+    }
+  }).catch(() => {
+    alert("⚠️ Failed to connect to the server.");
+  });
+}
+
+
+
     const translations = {
       ar: {
-        lang: "ar",
-        dir: "rtl",
+        modal: { title: "طلب الباقة", name: "اسمك", email: "البريد الإلكتروني", phone: "رقم الهاتف", details: "اكتب تفاصيل الطلب", submit: "إرسال الطلب" },
+        lang: "ar", dir: "rtl",
         nav: ["الرئيسية", "من نحن", "خدماتنا", "الباقات", "تواصل معنا"],
         title: "مرحبا بك في <span class='highlighted'>Markode</span>",
-        desc: "وجهتك الذكية للتسويق الرقمي وتطوير البرمجيات، نبتكر الحلول وندعم نموك الرقمي، وندخل أفكارك إلى واقع.",
-        cards: [
-          ["باقة الناشئين", "تصميم هوية + موقع تعريفي + حملة انطلاقية.", "اطلب الآن"],
-          ["باقة الشركات", "حلول متكاملة للتسويق وتطوير المواقع للشركات.", "اطلب الآن"],
-          ["باقة التطوير", "خدمة تطوير تطبيق أو نظام مخصص حسب الطلب.", "تواصل معنا"]
-        ]
+        desc: "وجهتك الذكية للتسويق الرقمي وتطوير البرمجيات...",
+        cards: [["باقة الناشئين", "تصميم هوية + موقع تعريفي + حملة انطلاقية.", "اطلب الآن"],
+                ["باقة الشركات", "حلول متكاملة للتسويق وتطوير المواقع للشركات.", "اطلب الآن"],
+                ["باقة التطوير", "خدمة تطوير تطبيق أو نظام مخصص حسب الطلب.", "تواصل معنا"]]
       },
       en: {
-        lang: "en",
-        dir: "ltr",
+        modal: { title: "Order Plan", name: "Your Name", email: "Email", phone: "Phone", details: "Request details", submit: "Submit" },
+        lang: "en", dir: "ltr",
         nav: ["Home", "About", "Services", "Plans", "Contact"],
         title: "Welcome to <span class='highlighted'>Markode</span>",
-        desc: "Your smart destination for digital marketing and software development. We innovate solutions, support your digital growth, and turn your ideas into reality.",
-        cards: [
-          ["Starter Plan", "Brand identity + Landing website + Launch campaign.", "Order Now"],
-          ["Business Plan", "Integrated solutions for marketing and web development.", "Order Now"],
-          ["Development Plan", "Custom application or system development on demand.", "Contact Us"]
-        ]
+        desc: "Your smart destination for digital marketing...",
+        cards: [["Starter Plan", "Brand identity + website + launch campaign.", "Order Now"],
+                ["Business Plan", "Full marketing and website development solutions.", "Order Now"],
+                ["Development Plan", "Custom app or system tailored for you.", "Contact Us"]]
       }
     };
 
@@ -237,27 +368,27 @@
       const t = translations[lang];
       document.documentElement.lang = t.lang;
       document.documentElement.dir = t.dir;
-
-      document.getElementById("nav-home").textContent = t.nav[0];
-      document.getElementById("nav-about").textContent = t.nav[1];
-      document.getElementById("nav-services").textContent = t.nav[2];
-      document.getElementById("nav-plans").textContent = t.nav[3];
-      document.getElementById("nav-contact").textContent = t.nav[4];
-
+      [navHome, navAbout, navServices, navPlans, navContact] = t.nav;
+      document.getElementById("nav-home").textContent = navHome;
+      document.getElementById("nav-about").textContent = navAbout;
+      document.getElementById("nav-services").textContent = navServices;
+      document.getElementById("nav-plans").textContent = navPlans;
+      document.getElementById("nav-contact").textContent = navContact;
       document.getElementById("hero-title").innerHTML = `<strong>${t.title}</strong>`;
       document.getElementById("hero-desc").textContent = t.desc;
 
-      document.getElementById("card1-title").textContent = t.cards[0][0];
-      document.getElementById("card1-desc").textContent = t.cards[0][1];
-      document.getElementById("card1-btn").textContent = t.cards[0][2];
+      document.getElementById("modal-title").textContent = t.modal.title;
+      document.getElementById("modal-name").placeholder = t.modal.name;
+      document.getElementById("modal-email").placeholder = t.modal.email;
+      document.getElementById("modal-phone").placeholder = t.modal.phone;
+      document.getElementById("modal-details").placeholder = t.modal.details;
+      document.getElementById("modal-submit").textContent = t.modal.submit;
 
-      document.getElementById("card2-title").textContent = t.cards[1][0];
-      document.getElementById("card2-desc").textContent = t.cards[1][1];
-      document.getElementById("card2-btn").textContent = t.cards[1][2];
-
-      document.getElementById("card3-title").textContent = t.cards[2][0];
-      document.getElementById("card3-desc").textContent = t.cards[2][1];
-      document.getElementById("card3-btn").textContent = t.cards[2][2];
+      for (let i = 1; i <= 3; i++) {
+        document.getElementById(`card${i}-title`).textContent = t.cards[i - 1][0];
+        document.getElementById(`card${i}-desc`).textContent = t.cards[i - 1][1];
+        document.getElementById(`card${i}-btn`).textContent = t.cards[i - 1][2];
+      }
 
       arBtn.classList.toggle("active", lang === "ar");
       enBtn.classList.toggle("active", lang === "en");
