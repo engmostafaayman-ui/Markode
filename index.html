@@ -62,9 +62,31 @@
     }
     .ticker__item { opacity: .95; color: #f5f5f5; }
     /* الحركة المستمرة بلا فراغ: ننقل السكة كلها -50% ثم تعاد */
-    @keyframes marquee {
-      0%   { transform: translateX(0); }
-      100% { transform: translateX(-50%); }
+    .marquee {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  background: #111;
+  color: #fff;
+}
+
+.marquee-content {
+  display: inline-block;
+  white-space: nowrap;
+  animation: marquee 10s linear infinite;
+}
+/* الحركة */
+@keyframes marquee {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(-0%); /* نصف العرض لأن عندنا نسختين */
+  }
+}
+    .ticker__item {
+      padding: 0 10px; font-size: 14px; font-weight: 500; text-align: center;
+      background: rgba(255,255,255,0.08); border-radius: 8px; border: 1px solid rgba(255,255,255,0.12);
     }
 
     /* ===== Cards ===== */
@@ -443,10 +465,13 @@
       while (rail.scrollWidth < wrapper.clientWidth * 2) {
         b.innerHTML += a.innerHTML;
         a.innerHTML += a.innerHTML;
+
       }
 
       // فعّل الحركة على السكة الكاملة (المسارين معًا)
-      const duration = Math.max(18, Math.round(rail.scrollWidth / 40)); // مدة ديناميكية حسب الطول
+      const duration = Math.max(20, Math.round(rail.scrollWidth / 50)); // 20 ثانية على الأقل
+      requestAnimationFrame(() => rail);
+      // مدة ديناميكية حسب الطول
       rail.style.animation = `marquee ${duration}s linear infinite`;
     }
 
