@@ -2,217 +2,152 @@
 <html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Markode | الرئيسية</title>
   <link rel="icon" href="logo.png" type="image/png">
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap');
 
-    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Cairo', sans-serif; }
+    *{margin:0;padding:0;box-sizing:border-box;font-family:'Cairo',sans-serif}
 
-    body {
-      background: url('background.png') no-repeat center center fixed;
-      background-size: cover;
-      color: #fff;
-      direction: rtl;
-      line-height: 1.7;
+    body{
+      background:url('background.png') no-repeat center center fixed;
+      background-size:cover; color:#fff; direction:rtl; line-height:1.7;
     }
 
-    .language-switch { display: flex; justify-content: flex-start; padding: 8px 16px; gap: 5px; }
-    .language-switch button {
-      background-color: #004e92; color: #fff; border: none; padding: 3px 10px;
-      border-radius: 16px; cursor: pointer; font-weight: bold; font-size: 11px;
+    .language-switch{display:flex;justify-content:flex-start;padding:8px 16px;gap:5px}
+    .language-switch button{
+      background:#004e92;color:#fff;border:0;padding:3px 10px;border-radius:16px;cursor:pointer;font-weight:bold;font-size:11px
     }
-    .language-switch button.active, .language-switch button:hover { background-color: #eb6e00; }
+    .language-switch button.active,.language-switch button:hover{background:#eb6e00}
 
-    nav.navbar {
-      background-color: rgba(0, 0, 0, 0.8);
-      padding: 6px;
-      display: flex; justify-content: center; gap: 4px; flex-wrap: wrap;
-      position: sticky; top: 0; z-index: 1000; backdrop-filter: blur(10px);
+    nav.navbar{
+      background:rgba(0,0,0,.8); padding:6px; display:flex; justify-content:center; gap:4px; flex-wrap:wrap;
+      position:sticky; top:0; z-index:1000; backdrop-filter:blur(10px)
     }
-    nav.navbar a {
-      text-decoration: none; background-color: #eb6e00; color: white;
-      padding: 5px 10px; border-radius: 14px; font-size: 10px; font-weight: bold; transition: 0.3s;
+    nav.navbar a{
+      text-decoration:none;background:#eb6e00;color:#fff;padding:5px 10px;border-radius:14px;font-size:10px;font-weight:bold;transition:.3s
     }
-    nav.navbar a:hover { background-color: #004e92; }
+    nav.navbar a:hover{background:#004e92}
 
-    .hero { padding: 60px 20px; text-align: center; }
-    .hero-box {
-      background-color: rgba(255, 255, 255, 0.1); color: #fff; padding: 25px; margin: 0 auto 30px;
-      border-radius: 18px; max-width: 680px; box-shadow: 0 0 30px rgba(0, 0, 0, 0.3);
-      backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.1);
+    .hero{padding:60px 20px; text-align:center}
+    .hero-box{
+      background:rgba(255,255,255,.1); color:#fff; padding:25px; margin:0 auto 30px; border-radius:18px; max-width:680px;
+      box-shadow:0 0 30px rgba(0,0,0,.3); backdrop-filter:blur(10px); border:1px solid rgba(255,255,255,.1)
     }
-    .hero-box h1 { font-size: 30px; color: #060c1e; margin-bottom: 10px; }
-    .highlighted { color: #eb6e00; }
-    .hero-box p { font-size: 16px; color: #eee; }
-    .hero img { max-width: 100%; border-radius: 15px; margin-top: 30px; box-shadow: 0 0 20px rgba(0,0,0,0.4); }
+    .hero-box h1{font-size:30px;color:#060c1e;margin-bottom:10px}
+    .highlighted{color:#eb6e00}
+    .hero-box p{font-size:16px;color:#eee}
+    .hero img{max-width:100%;border-radius:15px;margin-top:30px;box-shadow:0 0 20px rgba(0,0,0,.4)}
 
     /* ===== Ticker ===== */
-    .ticker {
-      margin: 18px auto 0; max-width: 900px; overflow: hidden;
-      border: 1px solid rgba(255,255,255,0.15); border-radius: 12px; background: rgba(0,0,0,0.55);
+    .ticker{
+      margin:18px auto 0; max-width:900px; overflow:hidden;
+      border:1px solid rgba(255,255,255,.15); border-radius:12px; background:rgba(0,0,0,.55)
     }
-    .ticker__rail {
-      display: flex; /* سنضع داخلها مسارين متتاليين */
-      width: max-content;
+    .ticker__rail{display:inline-flex; white-space:nowrap; animation:rail-marquee 24s linear infinite}
+    .ticker__track{display:inline-flex; gap:28px; padding:10px 14px}
+    .ticker__item{
+      padding:0 10px; font-size:14px; font-weight:500; text-align:center; opacity:.95; color:#f5f5f5;
+      background:rgba(255,255,255,.08); border-radius:8px; border:1px solid rgba(255,255,255,.12)
     }
-    .ticker__track {
-      display: inline-flex; gap: 28px; padding: 10px 14px; white-space: nowrap;
-    }
-    .ticker__item { opacity: .95; color: #f5f5f5; }
-    /* الحركة المستمرة بلا فراغ: ننقل السكة كلها -50% ثم تعاد */
-    .marquee {
-  width: 100%;
-  overflow: hidden;
-  position: relative;
-  background: #111;
-  color: #fff;
-}
-
-.marquee-content {
-  display: inline-block;
-  white-space: nowrap;
-  animation: marquee 10s linear infinite;
-}
-/* الحركة */
-@keyframes marquee {
-  from {
-    transform: translateX(100%);
-  }
-  to {
-    transform: translateX(-0%); /* نصف العرض لأن عندنا نسختين */
-  }
-}
-    .ticker__item {
-      padding: 0 10px; font-size: 14px; font-weight: 500; text-align: center;
-      background: rgba(255,255,255,0.08); border-radius: 8px; border: 1px solid rgba(255,255,255,0.12);
-    }
+    @keyframes rail-marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 
     /* ===== Cards ===== */
-    .cards {
-      display: flex; flex-wrap: wrap; justify-content: center; gap: 30px; padding: 60px 20px;
+    .cards{display:flex;flex-wrap:wrap;justify-content:center;gap:30px;padding:60px 20px}
+    .card{
+      background:rgba(255,255,255,.1); color:#fff; padding:25px; border-radius:18px; width:320px; text-align:center;
+      box-shadow:0 8px 24px rgba(0,0,0,.4); backdrop-filter:blur(10px); border:1px solid rgba(255,255,255,.1); transition:transform .3s ease
     }
-    .card {
-      background-color: rgba(255, 255, 255, 0.1); color: #fff; padding: 25px; border-radius: 18px;
-      width: 320px; text-align: center; box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
-      backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.1); transition: transform 0.3s ease;
+    .card:hover{transform:translateY(-5px)}
+    .card h3{font-size:24px;margin-bottom:10px;color:#060c1e}
+    .card p{font-size:15px;margin-bottom:20px;color:#ccc}
+    .card button{
+      background:linear-gradient(45deg,#eb6e00,#ff8800); color:#fff; padding:12px 24px; border:0; border-radius:10px; font-weight:bold; cursor:pointer; font-size:14px; transition:background .3s
     }
-    .card:hover { transform: translateY(-5px); }
-    .card h3 { font-size: 24px; margin-bottom: 10px; color: #060c1e; }
-    .card p { font-size: 15px; margin-bottom: 20px; color: #ccc; }
-    .card button {
-      background: linear-gradient(45deg, #eb6e00, #ff8800); color: #fff; padding: 12px 24px; border: none;
-      border-radius: 10px; font-weight: bold; cursor: pointer; font-size: 14px; transition: background 0.3s;
-    }
-    .card button:hover { background: linear-gradient(45deg, #004e92, #0072d9); }
+    .card button:hover{background:linear-gradient(45deg,#004e92,#0072d9)}
 
     /* ===== Stats ===== */
-    .stats {
-      display: grid; grid-template-columns: repeat(3, minmax(160px, 1fr)); gap: 14px;
-      padding: 10px 20px 0; max-width: 820px; margin: 0 auto;
+    .stats{
+      display:grid; grid-template-columns:repeat(3,minmax(160px,1fr)); gap:14px; padding:10px 20px 0; max-width:820px; margin:0 auto
     }
-    .stat {
-      background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.12);
-      border-radius: 14px; padding: 14px; text-align: center;
-    }
-    .stat .num { font-size: 26px; font-weight: 800; color: #fff; }
-    .stat .label { color: #ddd; font-size: 13px; }
+    .stat{background:rgba(255,255,255,.1); border:1px solid rgba(255,255,255,.12); border-radius:14px; padding:14px; text-align:center}
+    .stat .num{font-size:26px;font-weight:800;color:#fff}
+    .stat .label{color:#ddd;font-size:13px}
 
     /* ===== Modal ===== */
-    .modal { position: fixed; top: 0; right: 0; bottom: 0; left: 0; background-color: rgba(0,0,0,0.5);
-      display: none; justify-content: center; align-items: center; z-index: 1000; }
-    .modal-content {
-      background: linear-gradient(135deg, #f0f0f0, #e6e6e6); color: #000; padding: 20px; border-radius: 12px;
-      width: 320px; box-shadow: 0 0 25px rgba(0,0,0,0.4);
+    .modal{position:fixed;inset:0;background:rgba(0,0,0,.5);display:none;justify-content:center;align-items:center;z-index:1000}
+    .modal-content{
+      background:linear-gradient(135deg,#f0f0f0,#e6e6e6); color:#000; padding:20px; border-radius:12px; width:320px; box-shadow:0 0 25px rgba(0,0,0,.4)
     }
-    .modal-content input, .modal-content textarea {
-      width: 100%; margin-bottom: 10px; padding: 10px; border-radius: 6px; border: 1px solid #ccc;
+    .modal-content input,.modal-content textarea{
+      width:100%;margin-bottom:10px;padding:10px;border-radius:6px;border:1px solid #ccc
     }
-    .modal-content .close { float: left; font-size: 20px; cursor: pointer; }
-    .modal-content button {
-      background-color: #eb6e00; color: #fff; border: none; padding: 10px 20px; border-radius: 8px;
-      font-weight: bold; cursor: pointer; transition: background-color 0.3s ease;
+    .modal-content .close{float:left;font-size:20px;cursor:pointer}
+    .modal-content button{
+      background:#eb6e00;color:#fff;border:0;padding:10px 20px;border-radius:8px;font-weight:bold;cursor:pointer;transition:background-color .3s ease
     }
-    .modal-content button:hover { background-color: #c75b00; }
+    .modal-content button:hover{background:#c75b00}
 
     /* ===== Quick Quote ===== */
-    .section { padding: 40px 16px; max-width: 1000px; margin: 0 auto; }
-
-    /* القائمة المنسدلة بالأسود فعليًا */
-    select,
-    .quote-grid select { 
-      background-color: #000 !important;
-      color: #fff !important;
-      border: 1px solid #555 !important;
-      padding: 8px;
-      border-radius: 10px;
+    .section{padding:40px 16px; max-width:1000px; margin:0 auto}
+    select,.quote-grid select{
+      background:#000 !important; color:#fff !important; border:1px solid #555 !important; padding:8px; border-radius:10px
     }
-    option { background-color: #000; color: #fff; }
-
-    .section .box {
-      background: rgba(0,0,0,0.55); border: 1px solid rgba(255,255,255,0.12);
-      border-radius: 16px; padding: 18px;
+    option{background:#000;color:#fff}
+    .section .box{background:rgba(0,0,0,.55); border:1px solid rgba(255,255,255,.12); border-radius:16px; padding:18px}
+    .section h2{font-size:22px;margin-bottom:8px;color:#fff}
+    .section p.muted{color:#dcdcdc;margin-bottom:10px}
+    .quote-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+    .quote-grid .row{display:flex;flex-direction:column;gap:6px}
+    .quote-grid input[type="range"],.quote-grid input[type="text"]{
+      background:rgba(255,255,255,.08); color:#fff; border:1px solid rgba(255,255,255,.15); border-radius:10px; padding:8px 10px
     }
-    .section h2 { font-size: 22px; margin-bottom: 8px; color: #fff; }
-    .section p.muted { color: #dcdcdc; margin-bottom: 10px; }
-    .quote-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-    .quote-grid .row { display: flex; flex-direction: column; gap: 6px; }
-    .quote-grid input[type="range"], .quote-grid input[type="text"] {
-      background: rgba(255,255,255,0.08); color: #fff; border: 1px solid rgba(255,255,255,0.15);
-      border-radius: 10px; padding: 8px 10px;
+    .estimate{
+      margin-top:8px; padding:10px; border:1px dashed rgba(255,255,255,.18); border-radius:12px;
+      display:flex; align-items:center; gap:8px; justify-content:space-between
     }
-    .estimate {
-      margin-top: 8px; padding: 10px; border: 1px dashed rgba(255,255,255,0.18); border-radius: 12px;
-      display: flex; align-items: center; gap: 8px; justify-content: space-between;
+    .estimate strong{font-size:18px}
+    .quote-actions{display:flex;gap:8px;margin-top:10px;flex-wrap:wrap}
+    .btn{
+      display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:10px 14px;border-radius:12px;border:1px solid rgba(255,255,255,.18);
+      background:#eb6e00;color:#fff;cursor:pointer;font-weight:700;text-decoration:none
     }
-    .estimate strong { font-size: 18px; }
-    .quote-actions { display: flex; gap: 8px; margin-top: 10px; flex-wrap: wrap; }
-    .btn {
-      display: inline-flex; align-items: center; justify-content: center; gap: 8px;
-      padding: 10px 14px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.18);
-      background: #eb6e00; color: #fff; cursor: pointer; font-weight: 700;
-    }
-    .btn.secondary { background: transparent; }
-    .btn:hover { filter: brightness(1.05); }
-    .badge { background: rgba(255,255,255,0.08); padding: 4px 10px; border-radius: 999px; border: 1px solid rgba(255,255,255,0.15); }
+    .btn.secondary{background:transparent}
+    .btn:hover{filter:brightness(1.05)}
+    .badge{background:rgba(255,255,255,.08);padding:4px 10px;border-radius:999px;border:1px solid rgba(255,255,255,.15)}
 
     /* ===== Floating WhatsApp + Chat + Top ===== */
-    .fab {
-      position: fixed; bottom: 18px; inset-inline-end: 18px; width: 56px; height: 56px; border-radius: 50%;
-      display: grid; place-items: center; border: 0; cursor: pointer; z-index: 1200;
-      background: #25D366; color: #0b1b0b; box-shadow: 0 8px 24px rgba(0,0,0,.35);
-      font-size: 22px; text-decoration: none; /* إزالة أي خط */
+    .fab{
+      position:fixed;bottom:18px;inset-inline-end:18px;width:56px;height:56px;border-radius:50%;
+      display:grid;place-items:center;border:0;cursor:pointer;z-index:1200;
+      background:#25D366;color:#0b1b0b;box-shadow:0 8px 24px rgba(0,0,0,.35);font-size:22px;text-decoration:none
     }
-    .fab svg { width: 28px; height: 28px; display: block; }
-    .fab.chat { inset-inline-end: 86px; background: linear-gradient(45deg, #004e92, #0072d9); color: #fff; }
-    .chat-box {
-      position: fixed; bottom: 86px; inset-inline-end: 18px; width: min(360px, 92vw);
-      background: rgba(0,0,0,.8); border: 1px solid rgba(255,255,255,0.15); border-radius: 16px;
-      overflow: hidden; display: none; z-index: 1200;
+    .fab svg{width:28px;height:28px;display:block}
+    .fab.chat{inset-inline-end:86px;background:linear-gradient(45deg,#004e92,#0072d9);color:#fff}
+    .chat-box{
+      position:fixed;bottom:86px;inset-inline-end:18px;width:min(360px,92vw);
+      background:rgba(0,0,0,.8);border:1px solid rgba(255,255,255,.15);border-radius:16px;overflow:hidden;display:none;z-index:1200
     }
-    .chat-head { display: flex; justify-content:space-between; align-items:center; padding: 10px 12px; background: rgba(0,0,0,.85); border-bottom: 1px solid rgba(255,255,255,0.12); }
-    .chat-body { max-height: 300px; overflow: auto; padding: 10px; display: grid; gap: 8px; }
-    .bubble { padding: 10px 12px; border-radius: 14px; border: 1px solid rgba(255,255,255,0.15); max-width: 85%; }
-    .bubble.bot { background: rgba(255,255,255,0.06); }
-    .bubble.me { background: rgba(255,255,255,0.12); margin-inline-start: auto; }
-    .chat-form { display: flex; gap: 8px; border-top: 1px solid rgba(255,255,255,0.12); padding: 8px; }
-    .chat-form input { flex: 1; background: rgba(255,255,255,0.08); color: #fff; border: 1px solid rgba(255,255,255,0.15); border-radius: 10px; padding: 8px 10px; }
-    .chat-form button { background: #eb6e00; border: none; color: #fff; border-radius: 10px; padding: 8px 12px; cursor: pointer; }
-    .top-btn {
-      position: fixed; bottom: 18px; inset-inline-start: 18px; width: 46px; height: 46px; border-radius: 50%;
-      border: 0; background: rgba(0,0,0,.65); color: #fff; cursor: pointer; display: none; z-index: 1200;
-    }
+    .chat-head{display:flex;justify-content:space-between;align-items:center;padding:10px 12px;background:rgba(0,0,0,.85);border-bottom:1px solid rgba(255,255,255,.12)}
+    .chat-body{max-height:300px;overflow:auto;padding:10px;display:grid;gap:8px}
+    .bubble{padding:10px 12px;border-radius:14px;border:1px solid rgba(255,255,255,.15);max-width:85%}
+    .bubble.bot{background:rgba(255,255,255,.06)}
+    .bubble.me{background:rgba(255,255,255,.12);margin-inline-start:auto}
+    .chat-form{display:flex;gap:8px;border-top:1px solid rgba(255,255,255,.12);padding:8px}
+    .chat-form input{flex:1;background:rgba(255,255,255,.08);color:#fff;border:1px solid rgba(255,255,255,.15);border-radius:10px;padding:8px 10px}
+    .chat-form button{background:#eb6e00;border:0;color:#fff;border-radius:10px;padding:8px 12px;cursor:pointer}
+    .top-btn{position:fixed;bottom:18px;inset-inline-start:18px;width:46px;height:46px;border-radius:50%;border:0;background:rgba(0,0,0,.65);color:#fff;cursor:pointer;display:none;z-index:1200}
 
-    @media (max-width: 900px) { .quote-grid { grid-template-columns: 1fr; } }
-    @media (max-width: 600px) {
-      .hero-box h1 { font-size: 24px; }
-      .hero img { width: 100%; height: auto; }
-      .cards { flex-direction: column; align-items: center; }
-      .card { max-width: 90%; }
-      .stats { grid-template-columns: 1fr 1fr; }
+    @media(max-width:900px){.quote-grid{grid-template-columns:1fr}}
+    @media(max-width:600px){
+      .hero-box h1{font-size:24px}
+      .hero img{width:100%;height:auto}
+      .cards{flex-direction:column;align-items:center}
+      .card{max-width:90%}
+      .stats{grid-template-columns:1fr 1fr}
     }
-    @media (max-width: 400px) { nav.navbar a { font-size: 8px; padding: 3px 6px; } .stats { grid-template-columns: 1fr; } }
+    @media(max-width:400px){nav.navbar a{font-size:8px;padding:3px 6px}.stats{grid-template-columns:1fr}}
   </style>
 </head>
 <body>
@@ -295,14 +230,14 @@
           <label for="qq-service" id="qq-service-label">نوع الخدمة</label>
           <select id="qq-service">
             <option value="identity" id="qq-op-identity">هوية بصرية</option>
-            <option value="website" id="qq-op-website">موقع ويب</option>
-            <option value="app" id="qq-op-app">تطبيق جوال</option>
-            <option value="marketing" id="qq-op-marketing">تسويق رقمي</option>
+            <option value="website"  id="qq-op-website">موقع ويب</option>
+            <option value="app"      id="qq-op-app">تطبيق جوال</option>
+            <option value="marketing"id="qq-op-marketing">تسويق رقمي</option>
           </select>
         </div>
         <div class="row">
           <label for="qq-budget" id="qq-budget-label">الميزانية المتوقعة (بالجنيه المصري)</label>
-          <input type="range" id="qq-budget" min="100" max="200000" step="100" value="100" />
+          <input type="range" id="qq-budget" min="100" max="200000" step="100" value="100"/>
           <div><span class="badge" id="qq-budget-out">100 ج.م</span></div>
         </div>
         <div class="row">
@@ -315,7 +250,7 @@
           <label for="qq-time" id="qq-time-label">الإطار الزمني</label>
           <select id="qq-time">
             <option value="normal" id="qq-time-normal">عادي</option>
-            <option value="rush" id="qq-time-rush">عاجل</option>
+            <option value="rush"   id="qq-time-rush">عاجل</option>
           </select>
         </div>
       </div>
@@ -326,7 +261,7 @@
       </div>
 
       <div class="quote-actions">
-        <button class="btn" id="qq-send">أرسل عبر واتساب</button>
+        <a href="#" target="_blank" class="btn" id="qq-send-quote">📩 أرسل عبر واتساب</a>
         <button class="btn secondary" id="qq-copy">نسخ التقدير</button>
       </div>
       <p class="muted" id="qq-note" style="margin-top:6px;">* تقدير مبدئي للإرشاد فقط — السعر النهائي بعد مكالمة تعريفية قصيرة.</p>
@@ -341,18 +276,17 @@
 
       <form class="contact-box" action="https://formspree.io/f/xeozlkkv" method="POST" onsubmit="showSuccessMessage(event)">
         <input type="hidden" id="plan-name" name="plan" value="">
-        <input type="text" name="name" id="modal-name" placeholder="الاسم" required>
-        <input type="email" name="email" id="modal-email" placeholder="البريد الإلكتروني" required>
-        <input type="tel" name="phone" id="modal-phone" placeholder="رقم الهاتف" required>
-        <textarea name="details" id="modal-details" placeholder="اكتب تفاصيل الطلب" required></textarea>
+        <input type="text"  name="name"   id="modal-name"    placeholder="الاسم" required>
+        <input type="email" name="email"  id="modal-email"   placeholder="البريد الإلكتروني" required>
+        <input type="tel"   name="phone"  id="modal-phone"   placeholder="رقم الهاتف" required>
+        <textarea           name="details"id="modal-details" placeholder="اكتب تفاصيل الطلب" required></textarea>
 
-        <p id="success-message" style="display:none; color: green; text-align: center; font-weight: bold;">
+        <p id="success-message" style="display:none;color:green;text-align:center;font-weight:bold;">
           ✅ Your request has been sent successfully! We will contact you shortly.
         </p>
 
         <center><button type="submit" id="modal-submit">إرسال الطلب</button></center>
       </form>
-
     </div>
   </div>
 
@@ -370,373 +304,306 @@
     <div class="chat-body" id="chatBody"></div>
     <form class="chat-form" id="chatForm">
       <input type="text" id="chatInput" placeholder="اكتب رسالتك..." aria-label="رسالة">
-      <button type="submit" id="chatSend">إرسال</button>
+      <button type="submit">إرسال</button>
     </form>
   </div>
 
   <script>
     /* ===== Modal control ===== */
-    function openModal(plan) {
-      document.getElementById("plan-name").value = plan;
-      document.getElementById("orderModal").style.display = "flex";
-    }
-    function closeModal() { document.getElementById("orderModal").style.display = "none"; }
+    function openModal(plan){document.getElementById("plan-name").value=plan;document.getElementById("orderModal").style.display="flex"}
+    function closeModal(){document.getElementById("orderModal").style.display="none"}
 
     /* ===== Formspree with success message ===== */
-    function showSuccessMessage(event) {
+    function showSuccessMessage(event){
       event.preventDefault();
-      const form = event.target;
-
-      fetch(form.action, { method: "POST", body: new FormData(form), headers: { 'Accept': 'application/json' } })
-      .then(response => {
-        if (response.ok) {
+      const form=event.target;
+      fetch(form.action,{method:"POST",body:new FormData(form),headers:{'Accept':'application/json'}}).then(r=>{
+        if(r.ok){
           form.reset();
-          const lang = document.documentElement.lang;
-          const msg = lang === "ar"
-            ? "✅ تم إرسال الطلب بنجاح! سنتواصل معك قريبًا."
-            : "✅ Your request has been sent successfully! We will contact you shortly.";
-          document.getElementById("success-message").textContent = msg;
-          document.getElementById("success-message").style.display = "block";
-          setTimeout(() => {
-            closeModal();
-            document.getElementById("success-message").style.display = "none";
-          }, 3000);
-        } else {
-          alert("❌ حدث خطأ أثناء إرسال الطلب.");
-        }
-      }).catch(() => { alert("⚠️ تعذر الاتصال بالخادم."); });
+          const isAr=document.documentElement.lang==="ar";
+          const msg=isAr?"✅ تم إرسال الطلب بنجاح! سنتواصل معك قريبًا.":"✅ Your request has been sent successfully! We will contact you shortly.";
+          const el=document.getElementById("success-message");
+          el.textContent=msg; el.style.display="block";
+          setTimeout(()=>{closeModal(); el.style.display="none";},3000);
+        }else{alert("❌ حدث خطأ أثناء إرسال الطلب.")}
+      }).catch(()=>alert("⚠️ تعذر الاتصال بالخادم."));
     }
 
-    /* ===== WhatsApp settings (صحيح) ===== */
-    const WHATSAPP_NUMBER = "966552083166"; // الرقم الدولي بدون +
-    function waUrl(text="") {
-      const msg = encodeURIComponent(text);
-      return `https://api.whatsapp.com/send?phone=${WHATSAPP_NUMBER}&text=${msg}`;
-    }
+    /* ===== WhatsApp Helpers ===== */
+    const WHATSAPP_NUMBER="966552083166"; // الدولي بدون +
+    const waFab=document.getElementById("waFab");
+    function waUrl(text=""){return `https://api.whatsapp.com/send?phone=${WHATSAPP_NUMBER}&text=${encodeURIComponent(text)}`}
 
-    /* ضع أيقونة واتساب SVG داخل الزر وأظهره */
-    const waFab = document.getElementById("waFab");
-    if (waFab) {
+    // زر واتساب العائم (SVG)
+    if(waFab){
       waFab.innerHTML = `
         <svg viewBox="0 0 32 32" aria-hidden="true">
           <path d="M19.11 17.18c-.27-.14-1.59-.78-1.84-.87-.25-.09-.43-.14-.62.14-.18.27-.71.87-.87 1.05-.16.18-.32.2-.59.07-.27-.14-1.14-.42-2.17-1.35-.8-.71-1.35-1.59-1.51-1.86-.16-.27-.02-.41.12-.55.12-.12.27-.32.41-.48.14-.16.18-.27.27-.45.09-.18.05-.34-.02-.48-.07-.14-.62-1.5-.85-2.06-.22-.53-.45-.46-.62-.46-.16 0-.34-.02-.52-.02s-.48.07-.73.34c-.25.27-.96.94-.96 2.29 0 1.35.98 2.66 1.12 2.84.14.18 1.93 2.95 4.68 4.14.65.28 1.16.45 1.56.57.65.21 1.25.18 1.72.11.52-.08 1.59-.65 1.81-1.27.23-.62.23-1.14.16-1.25-.07-.11-.25-.18-.52-.32z" fill="#ffffff"/>
           <path d="M26.69 5.31C23.83 2.45 20.07 1 16.12 1 8.38 1 2.06 7.32 2.06 15.06c0 2.47.64 4.87 1.85 6.99L2 31l9.13-1.91c2.05 1.12 4.36 1.72 6.74 1.72 7.74 0 14.06-6.32 14.06-14.06 0-3.95-1.45-7.71-4.31-10.57zM16.87 28.3c-2.18 0-4.3-.58-6.16-1.68l-.44-.26-5.42 1.14 1.14-5.29-.29-.48c-1.16-1.91-1.77-4.12-1.77-6.36 0-6.76 5.5-12.26 12.26-12.26 3.27 0 6.35 1.27 8.66 3.58s3.58 5.39 3.58 8.66c0 6.76-5.5 12.26-12.26 12.26z" fill="#ffffff"/>
-        </svg>
-      `;
-      waFab.href = waUrl("Hello from Markode");
-      waFab.target = "_blank";
-      waFab.rel = "noopener";
+        </svg>`;
+      waFab.href=waUrl("احتاج خدمة / مساعدة"); waFab.target="_blank"; waFab.rel="noopener";
     }
 
-    /* ===== Ticker messages ===== */
-    const TICKER_MESSAGES_AR = [
-      "استشارة تعريفية مجانية.", "جاهزون لإطلاق مشروعك خلال أيام.", "باقات مرنة وتكامل واتساب.", "شفافية في التسعير والتسليم."
-    ];
-    const TICKER_MESSAGES_EN = [
-      "Free discovery consultation.", "Launch your project in days.", "Flexible plans & WhatsApp integration.", "Transparent pricing & delivery."
-    ];
+    /* ===== Ticker ===== */
+    const TICKER_MESSAGES_AR=["استشارة تعريفية مجانية.","جاهزون لإطلاق مشروعك خلال أيام.","باقات مرنة وتكامل واتساب.","شفافية في التسعير والتسليم."];
+    const TICKER_MESSAGES_EN=["Free discovery consultation.","Launch your project in days.","Flexible plans & WhatsApp integration.","Transparent pricing & delivery."];
 
-    function fillTrack(track, msgs) {
-      track.innerHTML = "";
-      msgs.forEach((m) => {
-        const span = document.createElement("span");
-        span.className = "ticker__item";
-        span.textContent = m;
-        track.appendChild(span);
-      });
+    function fillTrack(track,msgs){
+      track.innerHTML=""; msgs.forEach(m=>{const span=document.createElement("span"); span.className="ticker__item"; span.textContent=m; track.appendChild(span);});
     }
-
     function buildTicker(){
-      const rail = document.getElementById("tickerRail");
-      const a = document.getElementById("tickerTrackA");
-      const b = document.getElementById("tickerTrackB");
-      if(!rail || !a || !b) return;
-
-      const msgs = document.documentElement.lang === "ar" ? TICKER_MESSAGES_AR : TICKER_MESSAGES_EN;
-
-      // املأ المسار الأول بالرسائل
-      fillTrack(a, msgs);
-
-      // انسخ المحتوى نفسه للمسار الثاني
-      b.innerHTML = a.innerHTML;
-
-      // لو كان العرض أقل من عرض الحاوية، كرّر العناصر حتى يصبح الطول كافيًا لسير سلس
-      const wrapper = document.querySelector(".ticker");
-      while (rail.scrollWidth < wrapper.clientWidth * 2) {
-        b.innerHTML += a.innerHTML;
-        a.innerHTML += a.innerHTML;
-
-      }
-
-      // فعّل الحركة على السكة الكاملة (المسارين معًا)
-      const duration = Math.max(20, Math.round(rail.scrollWidth / 50)); // 20 ثانية على الأقل
-      requestAnimationFrame(() => rail);
-      // مدة ديناميكية حسب الطول
-      rail.style.animation = `marquee ${duration}s linear infinite`;
+      const rail=document.getElementById("tickerRail");
+      const a=document.getElementById("tickerTrackA");
+      const b=document.getElementById("tickerTrackB");
+      const wrap=document.querySelector(".ticker");
+      if(!rail||!a||!b||!wrap) return;
+      const msgs=document.documentElement.lang==="ar"?TICKER_MESSAGES_AR:TICKER_MESSAGES_EN;
+      fillTrack(a,msgs); b.innerHTML=a.innerHTML;
+      // كرر حتى يتجاوز العرض 200% لتمرير سلس
+      while(rail.scrollWidth < wrap.clientWidth*2){ a.innerHTML+=a.innerHTML; b.innerHTML+=b.innerHTML; }
+      // مدة الحركة حسب الطول
+      const duration=Math.max(20, Math.round(rail.scrollWidth/60));
+      rail.style.animationDuration = duration+"s";
     }
 
-    /* ===== Stats (static display) ===== */
-    window.addEventListener("load", ()=>{
-      document.getElementById("statYears").textContent = "+5";
-      document.getElementById("statResponse").textContent = "~1h";
-      document.getElementById("statProjects").textContent = "200+";
+    /* ===== Stats (static) ===== */
+    window.addEventListener("load",()=>{
+      document.getElementById("statYears").textContent="+5";
+      document.getElementById("statResponse").textContent="~1h";
+      document.getElementById("statProjects").textContent="200+";
       buildTicker();
     });
 
     /* ===== Quick Quote (EGP) ===== */
-    const qqBudget = document.getElementById("qq-budget");
-    const qqOut   = document.getElementById("qq-budget-out");
-    const qqLow   = document.getElementById("qq-low");
-    const qqHigh  = document.getElementById("qq-high");
-    const qqSvc   = document.getElementById("qq-service");
+    const qqBudget=document.getElementById("qq-budget");
+    const qqOut   =document.getElementById("qq-budget-out");
+    const qqLow   =document.getElementById("qq-low");
+    const qqHigh  =document.getElementById("qq-high");
+    const qqSvc   =document.getElementById("qq-service");
 
     function fmtCurrency(n){
-      const ar = document.documentElement.lang === "ar";
-      const v = Number(n).toLocaleString("en-US");
-      return ar ? `${v} ج.م` : `${v} EGP`;
+      const ar=document.documentElement.lang==="ar";
+      const v=Number(n).toLocaleString("en-US");
+      return ar?`${v} ج.م`:`${v} EGP`;
     }
     function baseRange(s){
       switch(s){
-        case "identity": return [3000, 15000];
-        case "website":  return [7000, 45000];
-        case "app":      return [20000, 200000];
-        case "marketing":return [4000, 80000];
-        default:         return [5000, 20000];
+        case "identity": return [3000,15000];
+        case "website":  return [7000,45000];
+        case "app":      return [20000,200000];
+        case "marketing":return [4000,80000];
+        default:         return [5000,20000];
       }
     }
     function applyOpts([lo,hi]){
-      const seo   = document.getElementById("qq-seo").checked;
-      const cms   = document.getElementById("qq-cms").checked;
-      const multi = document.getElementById("qq-multi").checked;
-      const rush  = document.getElementById("qq-time").value === "rush";
-      let mul = 1;
-      if(seo)  mul += 0.12;
-      if(cms)  mul += 0.18;
-      if(multi)mul += 0.15;
-      if(rush) mul += 0.20;
-      return [Math.round(lo*mul), Math.round(hi*mul)];
+      const seo=document.getElementById("qq-seo").checked;
+      const cms=document.getElementById("qq-cms").checked;
+      const multi=document.getElementById("qq-multi").checked;
+      const rush=document.getElementById("qq-time").value==="rush";
+      let mul=1;
+      if(seo) mul+=0.12;
+      if(cms) mul+=0.18;
+      if(multi) mul+=0.15;
+      if(rush) mul+=0.20;
+      return [Math.round(lo*mul),Math.round(hi*mul)];
     }
-    function clampBudget([lo,hi], b){
-      if(b < lo) return [Math.round(b*0.8), Math.round(b*1.1)];
-      if(b > hi) return [Math.round(hi*0.9), Math.round(b*1.05)];
-      return [lo, hi];
+    function clampBudget([lo,hi],b){
+      if(b<lo) return [Math.round(b*0.8),Math.round(b*1.1)];
+      if(b>hi) return [Math.round(hi*0.9),Math.round(b*1.05)];
+      return [lo,hi];
     }
     function updateQuote(){
       if(!qqBudget) return;
-      qqOut.textContent = fmtCurrency(+qqBudget.value);
-      let range = baseRange(qqSvc.value);
-      range = applyOpts(range);
-      range = clampBudget(range, +qqBudget.value);
-      qqLow.textContent = fmtCurrency(range[0]);
-      qqHigh.textContent = fmtCurrency(range[1]);
+      qqOut.textContent=fmtCurrency(+qqBudget.value);
+      let range=baseRange(qqSvc.value);
+      range=applyOpts(range);
+      range=clampBudget(range,+qqBudget.value);
+      qqLow.textContent=fmtCurrency(range[0]);
+      qqHigh.textContent=fmtCurrency(range[1]);
     }
     ["input","change"].forEach(ev=>{
-      qqBudget?.addEventListener(ev, updateQuote);
-      qqSvc?.addEventListener(ev, updateQuote);
-      ["qq-seo","qq-cms","qq-multi","qq-time"].forEach(id=> document.getElementById(id)?.addEventListener(ev, updateQuote));
+      qqBudget?.addEventListener(ev,updateQuote);
+      qqSvc?.addEventListener(ev,updateQuote);
+      ["qq-seo","qq-cms","qq-multi","qq-time"].forEach(id=>document.getElementById(id)?.addEventListener(ev,updateQuote));
     });
-    qqBudget.value = 100;
-    updateQuote();
+    qqBudget.value=100; updateQuote();
 
-    document.getElementById("qq-copy")?.addEventListener("click", ()=>{
+    // إرسال التقدير عبر واتساب
+    document.getElementById("qq-send-quote")?.addEventListener("click",(e)=>{
+      e.preventDefault();
+      const ar=document.documentElement.lang==="ar";
+      const svcTxt=qqSvc.options[qqSvc.selectedIndex].textContent.trim();
+      const msg = ar
+        ? `طلب تقدير سريع:\n• الخدمة: ${svcTxt}\n• الميزانية المحددة: ${fmtCurrency(qqBudget.value)}\n• النطاق التقديري: ${qqLow.textContent} - ${qqHigh.textContent}\n— أُرسل من صفحة Markode.`
+        : `Quick estimate request:\n• Service: ${svcTxt}\n• Budget slider: ${fmtCurrency(qqBudget.value)}\n• Estimated range: ${qqLow.textContent} - ${qqHigh.textContent}\n— Sent from Markode page.`;
+      window.open(waUrl(msg),"_blank");
+    });
+
+    document.getElementById("qq-copy")?.addEventListener("click",()=>{
       navigator.clipboard.writeText(`Estimate: ${qqLow.textContent} - ${qqHigh.textContent}`);
-      const btn = document.getElementById("qq-copy");
-      const old = btn.textContent;
-      btn.textContent = (document.documentElement.lang === "ar") ? "تم النسخ ✓" : "Copied ✓";
-      setTimeout(()=> btn.textContent = old, 1600);
-    });
-    document.getElementById("qq-send")?.addEventListener("click", ()=>{
-      const msg = `${document.title}
-Service: ${qqSvc.value}
-Budget: ${fmtCurrency(qqBudget.value)}
-Estimate: ${qqLow.textContent} - ${qqHigh.textContent}`;
-      const a = document.createElement("a");
-      a.href = waUrl(msg);
-      a.target = "_blank";
-      a.rel = "noopener";
-      document.body.appendChild(a);
-      a.click();
-      a.remove();
+      const btn=document.getElementById("qq-copy");
+      const old=btn.textContent;
+      btn.textContent=(document.documentElement.lang==="ar")?"تم النسخ ✓":"Copied ✓";
+      setTimeout(()=>btn.textContent=old,1600);
     });
 
-    /* ===== Chat + Top ===== */
-    const chatFab  = document.getElementById("chatFab");
-    const chatBox  = document.getElementById("chatBox");
-    const chatBody = document.getElementById("chatBody");
-    const chatForm = document.getElementById("chatForm");
-    const chatInput= document.getElementById("chatInput");
-    const chatClose= document.getElementById("chatClose");
+    /* ===== Chat (3 خطوات ثم واتساب) + Top ===== */
+    const chatFab=document.getElementById("chatFab");
+    const chatBox=document.getElementById("chatBox");
+    const chatBodyEl=document.getElementById("chatBody");
+    const chatForm=document.getElementById("chatForm");
+    const chatInput=document.getElementById("chatInput");
+    const chatClose=document.getElementById("chatClose");
 
-    const SCRIPT_AR = [
+    const SCRIPT_AR=[
       "أهلاً بك! اختر نوع الخدمة: (هوية / موقع / تطبيق / تسويق)",
       "ما ميزانيتك التقريبية؟ (مثال: 15000 ج.م)",
-      "أرسل بريدك أو رقمك للتواصل:",
-      "جاهز — اضغط واتساب لإرسال الملخص."
+      "أرسل بريدك أو رقمك للتواصل:"
     ];
-    const SCRIPT_EN = [
+    const SCRIPT_EN=[
       "Welcome! Choose a service: (identity / website / app / marketing)",
       "What's your approximate budget? (e.g., 15000 EGP)",
-      "Share your email or phone:",
-      "Great — tap WhatsApp to send the summary."
+      "Share your email or phone:"
     ];
-    let step = 0;
-    function bot(text){
-      const b = document.createElement("div");
-      b.className = "bubble bot"; b.textContent = text; chatBody.appendChild(b);
-      chatBody.scrollTop = chatBody.scrollHeight;
-    }
-    function me(text){
-      const m = document.createElement("div");
-      m.className = "bubble me"; m.textContent = text; chatBody.appendChild(m);
-      chatBody.scrollTop = chatBody.scrollHeight;
-    }
-    function nextLine(){
-      const s = (document.documentElement.lang === "ar") ? SCRIPT_AR : SCRIPT_EN;
-      if(step < s.length) bot(s[step]);
-    }
-    chatFab?.addEventListener("click", ()=>{
-      chatBox.style.display = "block";
-      if(chatBody.childElementCount === 0) nextLine();
-    });
-    chatClose?.addEventListener("click", ()=> chatBox.style.display = "none");
-    chatForm?.addEventListener("submit", (e)=>{
+    let chatStep=0;
+    const chatAnswers=[];
+
+    function botMsg(t){const d=document.createElement("div"); d.className="bubble bot"; d.textContent=t; chatBodyEl.appendChild(d); chatBodyEl.scrollTop=chatBodyEl.scrollHeight;}
+    function userMsg(t){const d=document.createElement("div"); d.className="bubble me"; d.textContent=t; chatBodyEl.appendChild(d); chatBodyEl.scrollTop=chatBodyEl.scrollHeight;}
+    function script(){return document.documentElement.lang==="ar"?SCRIPT_AR:SCRIPT_EN}
+    function ask(){ botMsg(script()[chatStep]); chatInput.placeholder=script()[chatStep].replace(/[:：]$/,""); chatInput.focus(); }
+
+    chatFab?.addEventListener("click",()=>{ chatBox.style.display="block"; if(chatBodyEl.childElementCount===0) ask(); });
+    chatClose?.addEventListener("click",()=> chatBox.style.display="none");
+
+    chatForm?.addEventListener("submit",(e)=>{
       e.preventDefault();
-      const v = chatInput.value.trim(); if(!v) return;
-      me(v); chatInput.value = ""; step++;
-      if(step === 4){
-        const summary = `Chat lead:
-Service step: ${v}`;
-        const a = document.createElement("a");
-        a.href = waUrl(summary); a.target = "_blank"; a.rel = "noopener"; a.className = "btn";
-        a.textContent = (document.documentElement.lang === "ar") ? "إرسال عبر واتساب" : "Send via WhatsApp";
-        const w = document.createElement("div");
-        w.className = "bubble bot"; w.appendChild(a);
-        chatBody.appendChild(w); chatBody.scrollTop = chatBody.scrollHeight;
-      } else { nextLine(); }
-    });
-
-    const topBtn = document.getElementById("topBtn");
-    window.addEventListener("scroll", ()=>{
-      topBtn.style.display = (window.scrollY > 400) ? "block" : "none";
-    });
-    topBtn?.addEventListener("click", ()=> window.scrollTo({top:0, behavior:"smooth"}));
-
-    /* ===== الترجمات + إعادة بناء الشريط ===== */
-    const translations = {
-      ar: {
-        modal: { title: "طلب الباقة", name: "اسمك", email: "البريد الإلكتروني", phone: "رقم الهاتف", details: "اكتب تفاصيل الطلب", submit: "إرسال الطلب" },
-        lang: "ar", dir: "rtl",
-        nav: ["الرئيسية", "من نحن", "خدماتنا", "الباقات", "تواصل معنا"],
-        title: "مرحبا بك في <span class='highlighted'>Markode</span>",
-        desc: "وجهتك الذكية للتسويق الرقمي وتطوير البرمجيات...",
-        cards: [
-          ["باقة الناشئين", "تصميم هوية + موقع تعريفي + حملة انطلاقية.", "اطلب الآن"],
-          ["باقة الشركات", "حلول متكاملة للتسويق وتطوير المواقع للشركات.", "اطلب الآن"],
-          ["باقة التطوير", "خدمة تطوير تطبيق أو نظام مخصص حسب الطلب.", "تواصل معنا"]
-        ],
-        stats: { years:"سنوات خبرة", resp:"متوسط سرعة الرد", proj:"مبادرات وحملات" },
-        qq: {
-          title:"تقدير سعر فوري", desc:"اختر نوع الخدمة والخيارات لتحصل على نطاق تقديري سريع.",
-          service:"نوع الخدمة", budget:"الميزانية المتوقعة (بالجنيه المصري)", opts:"خيارات إضافية",
-          seo:"تحسين محركات البحث (SEO)", cms:"لوحة إدارة محتوى (CMS)", multi:"دعم لغتين",
-          time:"الإطار الزمني", normal:"عادي", rush:"عاجل",
-          range:"النطاق التقديري", send:"أرسل عبر واتساب", copy:"نسخ التقدير",
-          note:"* تقدير مبدئي للإرشاد فقط — السعر النهائي بعد مكالمة تعريفية قصيرة.",
-          opIdentity:"هوية بصرية", opWebsite:"موقع ويب", opApp:"تطبيق جوال", opMarketing:"تسويق رقمي"
-        }
-      },
-      en: {
-        modal: { title: "Order Plan", name: "Your Name", email: "Email", phone: "Phone", details: "Request details", submit: "Submit" },
-        lang: "en", dir: "ltr",
-        nav: ["Home", "About", "Services", "Plans", "Contact"],
-        title: "Welcome to <span class='highlighted'>Markode</span>",
-        desc: "Your smart destination for digital marketing...",
-        cards: [
-          ["Starter Plan", "Brand identity + website + launch campaign.", "Order Now"],
-          ["Business Plan", "Full marketing and website development solutions.", "Order Now"],
-          ["Development Plan", "Custom app or system tailored for you.", "Contact Us"]
-        ],
-        stats: { years:"Years of Experience", resp:"Avg. Response Time", proj:"Initiatives & Campaigns" },
-        qq: {
-          title:"Instant Estimate", desc:"Pick a service & options to see a quick range.",
-          service:"Service Type", budget:"Expected Budget (EGP)", opts:"Add-ons",
-          seo:"Search Engine Optimization", cms:"Content Management (CMS)", multi:"Bilingual Support",
-          time:"Timeline", normal:"Normal", rush:"Rush",
-          range:"Estimated Range", send:"Send via WhatsApp", copy:"Copy Estimate",
-          note:"* Rough guidance only — final price after a short discovery call.",
-          opIdentity:"Brand Identity", opWebsite:"Website", opApp:"Mobile App", opMarketing:"Digital Marketing"
-        }
+      const v=chatInput.value.trim(); if(!v) return;
+      userMsg(v); chatAnswers[chatStep]=v; chatInput.value=""; chatStep++;
+      if(chatStep < script().length){ ask(); }
+      else{
+        // ملخّص وإرسال واتساب
+        const ar=document.documentElement.lang==="ar";
+        const [service,budget,contact]=chatAnswers;
+        const summary = ar
+          ? `📝 ملخص الطلب:\n• الخدمة: ${service}\n• الميزانية: ${budget}\n• التواصل: ${contact}\n— تم الإرسال من نموذج الدردشة.`
+          : `📝 Request Summary:\n• Service: ${service}\n• Budget: ${budget}\n• Contact: ${contact}\n— Sent from chat widget.`;
+        window.open(waUrl(summary),"_blank");
+        // إعادة التهيئة للمحادثة التالية
+        botMsg(ar?"تم فتح واتساب. يمكنك بدء محادثة جديدة.":"WhatsApp opened. You can start a new chat.");
+        chatStep=0; chatAnswers.length=0; ask();
       }
+    });
+
+    const topBtn=document.getElementById("topBtn");
+    window.addEventListener("scroll",()=>{ topBtn.style.display=(window.scrollY>400)?"block":"none"; });
+    topBtn?.addEventListener("click",()=>window.scrollTo({top:0,behavior:"smooth"}));
+
+    /* ===== الترجمات + إعادة بناء التيكر ===== */
+    const translations={
+      ar:{modal:{title:"طلب الباقة",name:"اسمك",email:"البريد الإلكتروني",phone:"رقم الهاتف",details:"اكتب تفاصيل الطلب",submit:"إرسال الطلب"},
+          lang:"ar",dir:"rtl",
+          nav:["الرئيسية","من نحن","خدماتنا","الباقات","تواصل معنا"],
+          title:"مرحبا بك في <span class='highlighted'>Markode</span>",
+          desc:"وجهتك الذكية للتسويق الرقمي وتطوير البرمجيات...",
+          cards:[["باقة الناشئين","تصميم هوية + موقع تعريفي + حملة انطلاقية.","اطلب الآن"],
+                 ["باقة الشركات","حلول متكاملة للتسويق وتطوير المواقع للشركات.","اطلب الآن"],
+                 ["باقة التطوير","خدمة تطوير تطبيق أو نظام مخصص حسب الطلب.","تواصل معنا"]],
+          stats:{years:"سنوات خبرة",resp:"متوسط سرعة الرد",proj:"مبادرات وحملات"},
+          qq:{title:"تقدير سعر فوري",desc:"اختر نوع الخدمة والخيارات لتحصل على نطاق تقديري سريع.",
+              service:"نوع الخدمة",budget:"الميزانية المتوقعة (بالجنيه المصري)",opts:"خيارات إضافية",
+              seo:"تحسين محركات البحث (SEO)",cms:"لوحة إدارة محتوى (CMS)",multi:"دعم لغتين",
+              time:"الإطار الزمني",normal:"عادي",rush:"عاجل",
+              range:"النطاق التقديري",send:"أرسل عبر واتساب",copy:"نسخ التقدير",
+              note:"* تقدير مبدئي للإرشاد فقط — السعر النهائي بعد مكالمة تعريفية قصيرة.",
+              opIdentity:"هوية بصرية",opWebsite:"موقع ويب",opApp:"تطبيق جوال",opMarketing:"تسويق رقمي"}},
+      en:{modal:{title:"Order Plan",name:"Your Name",email:"Email",phone:"Phone",details:"Request details",submit:"Submit"},
+          lang:"en",dir:"ltr",
+          nav:["Home","About","Services","Plans","Contact"],
+          title:"Welcome to <span class='highlighted'>Markode</span>",
+          desc:"Your smart destination for digital marketing...",
+          cards:[["Starter Plan","Brand identity + website + launch campaign.","Order Now"],
+                 ["Business Plan","Full marketing and website development solutions.","Order Now"],
+                 ["Development Plan","Custom app or system tailored for you.","Contact Us"]],
+          stats:{years:"Years of Experience",resp:"Avg. Response Time",proj:"Initiatives & Campaigns"},
+          qq:{title:"Instant Estimate",desc:"Pick a service & options to see a quick range.",
+              service:"Service Type",budget:"Expected Budget (EGP)",opts:"Add-ons",
+              seo:"Search Engine Optimization",cms:"Content Management (CMS)",multi:"Bilingual Support",
+              time:"Timeline",normal:"Normal",rush:"Rush",
+              range:"Estimated Range",send:"Send via WhatsApp",copy:"Copy Estimate",
+              note:"* Rough guidance only — final price after a short discovery call.",
+              opIdentity:"Brand Identity",opWebsite:"Website",opApp:"Mobile App",opMarketing:"Digital Marketing"}}
     };
 
-    const arBtn = document.getElementById("ar-btn");
-    const enBtn = document.getElementById("en-btn");
+    const arBtn=document.getElementById("ar-btn");
+    const enBtn=document.getElementById("en-btn");
 
-    function updateLang(lang) {
-      const t = translations[lang];
-      document.documentElement.lang = t.lang;
-      document.documentElement.dir = t.dir;
+    function updateLang(lang){
+      const t=translations[lang];
+      document.documentElement.lang=t.lang;
+      document.documentElement.dir=t.dir;
 
       // Navbar
-      const [navHome, navAbout, navServices, navPlans, navContact] = t.nav;
-      document.getElementById("nav-home").textContent = navHome;
-      document.getElementById("nav-about").textContent = navAbout;
-      document.getElementById("nav-services").textContent = navServices;
-      document.getElementById("nav-plans").textContent = navPlans;
-      document.getElementById("nav-contact").textContent = navContact;
+      const [navHome,navAbout,navServices,navPlans,navContact]=t.nav;
+      document.getElementById("nav-home").textContent=navHome;
+      document.getElementById("nav-about").textContent=navAbout;
+      document.getElementById("nav-services").textContent=navServices;
+      document.getElementById("nav-plans").textContent=navPlans;
+      document.getElementById("nav-contact").textContent=navContact;
 
       // Hero
-      document.getElementById("hero-title").innerHTML = `<strong>${t.title}</strong>`;
-      document.getElementById("hero-desc").textContent = t.desc;
+      document.getElementById("hero-title").innerHTML=`<strong>${t.title}</strong>`;
+      document.getElementById("hero-desc").textContent=t.desc;
 
       // Cards
-      for (let i = 1; i <= 3; i++) {
-        document.getElementById(`card${i}-title`).textContent = t.cards[i - 1][0];
-        document.getElementById(`card${i}-desc`).textContent = t.cards[i - 1][1];
-        document.getElementById(`card${i}-btn`).textContent = t.cards[i - 1][2];
+      for(let i=1;i<=3;i++){
+        document.getElementById(`card${i}-title`).textContent=t.cards[i-1][0];
+        document.getElementById(`card${i}-desc`).textContent=t.cards[i-1][1];
+        document.getElementById(`card${i}-btn`).textContent=t.cards[i-1][2];
       }
 
       // Modal
-      document.getElementById("modal-title").textContent = t.modal.title;
-      document.getElementById("modal-name").placeholder = t.modal.name;
-      document.getElementById("modal-email").placeholder = t.modal.email;
-      document.getElementById("modal-phone").placeholder = t.modal.phone;
-      document.getElementById("modal-details").placeholder = t.modal.details;
-      document.getElementById("modal-submit").textContent = t.modal.submit;
+      document.getElementById("modal-title").textContent=t.modal.title;
+      document.getElementById("modal-name").placeholder=t.modal.name;
+      document.getElementById("modal-email").placeholder=t.modal.email;
+      document.getElementById("modal-phone").placeholder=t.modal.phone;
+      document.getElementById("modal-details").placeholder=t.modal.details;
+      document.getElementById("modal-submit").textContent=t.modal.submit;
 
       // Stats
-      document.getElementById("statYearsLabel").textContent = t.stats.years;
-      document.getElementById("statResponseLabel").textContent = t.stats.resp;
-      document.getElementById("statProjectsLabel").textContent = t.stats.proj;
+      document.getElementById("statYearsLabel").textContent=t.stats.years;
+      document.getElementById("statResponseLabel").textContent=t.stats.resp;
+      document.getElementById("statProjectsLabel").textContent=t.stats.proj;
 
       // Quick Quote texts
-      document.getElementById("qq-title").textContent = t.qq.title;
-      document.getElementById("qq-desc").textContent = t.qq.desc;
-      document.getElementById("qq-service-label").textContent = t.qq.service;
-      document.getElementById("qq-budget-label").textContent = t.qq.budget;
-      document.getElementById("qq-options-label").textContent = t.qq.opts;
-      document.getElementById("qq-seo-label").textContent = t.qq.seo;
-      document.getElementById("qq-cms-label").textContent = t.qq.cms;
-      document.getElementById("qq-multi-label").textContent = t.qq.multi;
-      document.getElementById("qq-time-label").textContent = t.qq.time;
-      document.getElementById("qq-time-normal").textContent = t.qq.normal;
-      document.getElementById("qq-time-rush").textContent = t.qq.rush;
-      document.getElementById("qq-range-title").textContent = t.qq.range;
-      document.getElementById("qq-send").textContent = t.qq.send;
-      document.getElementById("qq-copy").textContent = t.qq.copy;
-      document.getElementById("qq-note").textContent = t.qq.note;
-      document.getElementById("qq-op-identity").textContent = t.qq.opIdentity;
-      document.getElementById("qq-op-website").textContent = t.qq.opWebsite;
-      document.getElementById("qq-op-app").textContent = t.qq.opApp;
-      document.getElementById("qq-op-marketing").textContent = t.qq.opMarketing;
+      document.getElementById("qq-title").textContent=t.qq.title;
+      document.getElementById("qq-desc").textContent=t.qq.desc;
+      document.getElementById("qq-service-label").textContent=t.qq.service;
+      document.getElementById("qq-budget-label").textContent=t.qq.budget;
+      document.getElementById("qq-options-label").textContent=t.qq.opts;
+      document.getElementById("qq-seo-label").textContent=t.qq.seo;
+      document.getElementById("qq-cms-label").textContent=t.qq.cms;
+      document.getElementById("qq-multi-label").textContent=t.qq.multi;
+      document.getElementById("qq-time-label").textContent=t.qq.time;
+      document.getElementById("qq-time-normal").textContent=t.qq.normal;
+      document.getElementById("qq-time-rush").textContent=t.qq.rush;
+      document.getElementById("qq-range-title").textContent=t.qq.range;
+      document.getElementById("qq-note").textContent=t.qq.note;
+      document.getElementById("qq-op-identity").textContent=t.qq.opIdentity;
+      document.getElementById("qq-op-website").textContent=t.qq.opWebsite;
+      document.getElementById("qq-op-app").textContent=t.qq.opApp;
+      document.getElementById("qq-op-marketing").textContent=t.qq.opMarketing;
 
-      // Rebuild ticker to keep seamless loop
-      buildTicker();
-      updateQuote();
+      // زر إرسال التقدير
+      document.getElementById("qq-send-quote").textContent=t.qq.send;
+      document.getElementById("qq-copy").textContent=t.qq.copy;
+
+      // Rebuild ticker & refresh quote labels
+      buildTicker(); updateQuote();
     }
 
-    arBtn.onclick = () => { arBtn.classList.add('active'); enBtn.classList.remove('active'); updateLang("ar"); };
-    enBtn.onclick = () => { enBtn.classList.add('active'); arBtn.classList.remove('active'); updateLang("en"); };
+    arBtn.onclick=()=>{arBtn.classList.add('active');enBtn.classList.remove('active');updateLang("ar")};
+    enBtn.onclick=()=>{enBtn.classList.add('active');arBtn.classList.remove('active');updateLang("en")};
 
     // افتراضي: عربي
     updateLang("ar");
